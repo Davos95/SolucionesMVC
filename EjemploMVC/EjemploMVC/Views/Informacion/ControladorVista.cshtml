@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "ControladorVista";
+}
+
+<h2>ControladorVista</h2>
+
+<h1>Mensaje: @ViewData["Mensaje"]</h1>
+<h1>Mensaje: @ViewBag.Mensaje</h1>
+
+<h2> @DateTime.Now.ToLongTimeString()</h2>
+
+@if(ViewBag.Fecha is null) {
+   <h2 style="color:red">@DateTime.Parse(ViewBag.Fecha).ToLongDateString()</h2>
+}
+   
+@{ 
+    //Sintaxis para declarar objetos
+    EjemploMVC.Models.Persona persona;
+    persona = ViewBag.Persona;
+}
+
+<p>
+    @persona.Nombre, @persona.Apellidos, @persona.Edad
+</p>

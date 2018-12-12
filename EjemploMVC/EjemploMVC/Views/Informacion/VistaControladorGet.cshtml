@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "VistaControladorGet";
+}
+
+<h2>VistaControladorGet</h2>
+
+<h1>Nombre: @ViewBag.Nombre</h1>
+<!--
+    La informacion se puede enviar con actionlink, existe un cuarto parametro donde podemos indicar 
+    los valores que recibira el metodo action.
+    Los valores enviados deben de tener el mismo nombre que los parametros de recepcion (Binding)
+     new { parametro1 = valor, parametro2 = valor}
+    -->
+<ul>
+    <li>
+        @Html.ActionLink("VistaControlador Get Parametros", "VistaControladorGet", "Informacion", new { nombre = "David", edad = 23 }, null);
+    </li>
+</ul>
