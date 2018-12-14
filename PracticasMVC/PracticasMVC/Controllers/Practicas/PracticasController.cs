@@ -107,6 +107,55 @@ namespace PracticasMVC.Controllers.Practicas
             return View(numero);
         }
 
+        public ActionResult TablaMultiplicarHTML()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult TablaMultiplicarHTML(int? num)
+        {
+            String html = "<table class='table table-bordered'>";
+            for (int i = 1; i <= 10; i++)
+            {
+                int resultado = num.Value * i;
+                html += "<tr><td>" + i + " x " + num + "</td><td>"+resultado+"</td></tr>";
+            }
+            html += "</table>";
+            ViewBag.HTML = html;
+            return View();
+        }
+
+        public ActionResult VideosYoutube()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult VideosYoutube(String video)
+        {
+            if(video.Trim() != "")
+            {
+                String html = "<iframe width = '560' height = '315'";
+                if (video.IndexOf('=') > -1)
+                {
+                    String code = video.Split('=')[1];
+                     html += " src='https://www.youtube.com/embed/"+code+"' frameborder = '0' allow = 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen ></ iframe >";
+                } else if(video.Split('/').Length == 4)
+                {
+                    String[] array = video.Split('/');
+                    String code = array[array.Length - 1];
+                    html += " src='https://www.youtube.com/embed/" + code+ "' frameborder = '0' allow = 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen > </iframe>";
+                } else
+                {
+                    html += " src='" + video + "' frameborder = '0' allow = 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen > </iframe>";
+                }
+                
+                ViewBag.youtubeVideo = html;
+            }
+            
+            return View();
+        }
         //Metodo web para funcionar con AJAX
         [WebMethod]
         public int Sumar(String numeros)
