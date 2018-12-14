@@ -1,0 +1,23 @@
+﻿@model PracticasMVC.Models.Videos
+@{
+    ViewBag.Title = "ListaVideosYoutube";
+}
+
+<h2>ListaVideosYoutube</h2>
+
+<form method="post">
+    <select name="code" class="form-control bootstrap-select>
+        @foreach (PracticasMVC.Models.Videos v in ViewBag.selectVideos)
+        {
+            <option value="@v.video">@v.texto</option>
+        }
+    </select>
+    <br />
+    <button type="submit" class="form-control">Visualizar</button>
+</form>
+<br />
+
+<h2>@ViewBag.nombreVideo</h2>
+@Html.Raw(ViewBag.video)
+
+

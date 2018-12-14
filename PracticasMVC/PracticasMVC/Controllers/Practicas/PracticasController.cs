@@ -1,4 +1,5 @@
-﻿using PracticasMVC.Models;
+﻿using PracticasMVC.Helper;
+using PracticasMVC.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,7 @@ namespace PracticasMVC.Controllers.Practicas
 {
     public class PracticasController : Controller
     {
+        HelperVideos videos;
         // GET: Practicas
         public ActionResult Index()
         {
@@ -156,6 +158,38 @@ namespace PracticasMVC.Controllers.Practicas
             
             return View();
         }
+
+        // GET: ListaVideosYoutube
+        public ActionResult ListaVideosYoutube()
+        {
+            videos = new HelperVideos();
+
+            ViewBag.selectVideos = videos.GetVideos();
+            return View();
+        }
+
+        //POST: ListaVideosYoutube
+        [HttpPost]
+        public ActionResult ListaVideosYoutube(String code)
+        {
+            videos = new HelperVideos();
+
+            String html = "<iframe width = '560' height = '315'";
+            html += " src='https://www.youtube.com/embed/" + code + "' frameborder = '0' allow = 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen ></ iframe >";
+
+            ViewBag.selectVideos = videos.GetVideos();
+            foreach (Videos item in ViewBag.selectVideos)
+            {
+                if (item.video == code)
+                {
+                    ViewBag.nombreVideo = item.texto;
+                }
+            }
+            ViewBag.video = html;
+            return View();
+        }
+
+
         //Metodo web para funcionar con AJAX
         [WebMethod]
         public int Sumar(String numeros)
