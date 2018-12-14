@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "Numero Doble";
+}
+
+@{
+    Random random = new Random();
+}
+<h2>Numero Doble</h2>
+
+<ul>
+    @foreach (int n in ViewBag.numeros)
+    {
+        <li>@Html.ActionLink(n.ToString(),"NumeroDoble","Practicas", new { numGet = n},null)</li>
+    }
+</ul>
+
+@if(ViewBag.numDoble != null)
+{
+<h1>@ViewBag.numDoble</h1>
+}

@@ -1,0 +1,69 @@
+﻿@{
+    ViewBag.Title = "SumarNumeros";
+}
+@{ }
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script>
+    $(document).ready(function () {
+        var num = 3;
+        
+        $("#add").click(function () {
+            $("#moreElements").append("<div class='row'><div class='col-md-5 col-md-offset-3'> <label>Numero" + num + ": &nbsp;</label><input type = 'number' name='num" + num + "' /></div></div>");
+            num++;     
+        });
+
+        $("#sumar").click(function () {
+            var valores = { numeros: getAllValues() }; //Parametros del método al que se llama
+            $.ajax({
+                method: "POST",
+                url: '@Url.Action("Sumar")', //Llamada del método C# partiendo desde la ruta que acciona el GET
+                data: valores,
+                success: function (data) {
+                    console.log(data);
+                    $("#resultado").text(data);
+                }
+            });
+        });
+
+    });
+    //Obtiene todos los valores
+    function getAllValues() {
+        var numbers = "";
+        $("input").each(function (index) {
+            numbers += $(this).val() + ";";
+        })
+        return numbers;
+    }
+
+</script>
+
+<h2>Sumar Números</h2>
+<form method="post">
+    <div class="row">
+        <div class="col-md-5 col-md-offset-3">
+            <label>Numero1: &nbsp;</label>
+            <input type="number" name="num1" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-5 col-md-offset-3">
+            <label>Numero2: &nbsp;</label>
+            <input type="number" name="num2" />
+        </div>
+    </div>
+    <div id="moreElements">
+
+    </div>
+    <div class="row">
+        <button type="button" id="add">Añadir</button>
+    </div>
+    <div class="row">
+        <div class="col-md-5 col-md-offset-3">
+            <button type="button" id="sumar">Sumar</button>
+        </div>
+    </div>
+</form>
+
+<h1 id="resultado">@ViewBag.Suma</h1>
+
+

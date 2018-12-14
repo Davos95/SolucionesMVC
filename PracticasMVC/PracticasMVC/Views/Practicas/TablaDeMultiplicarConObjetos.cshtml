@@ -1,0 +1,59 @@
+﻿@model PracticasMVC.Models.Numero
+@{
+    ViewBag.Title = "TablaDeMultiplicarConObjetos";
+}
+
+
+@{
+    int indice = 1;
+}
+<style>
+    td {
+        border: solid 1px;
+        padding: 10px;
+    }
+
+    th {
+        border: solid 1px;
+    }
+</style>
+
+
+<h2>TablaDeMultiplicarConObjetos</h2>
+
+<form method="post">
+    <div class="row">
+        <div class="col-md-5">
+            <label>Numero: </label>
+            <input type="number" min="1" name="num" class="form-control" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-1">
+            <button type="submit" class="form-control">Tabla</button>
+        </div>
+    </div>
+</form>
+<br />
+<br />
+@if (@Model != null)
+{
+
+    <table>
+        <tr>
+            <th colspan="2"> Tabla de Multiplicar</th>
+        </tr>
+
+        @foreach (int num in Model.multiplicaciones)
+        {
+            <tr>
+                <td>@indice x @Model.numero</td>
+                <td>@num</td>
+            </tr>
+            @{ 
+                indice++;
+            }
+        }
+
+    </table>
+}
