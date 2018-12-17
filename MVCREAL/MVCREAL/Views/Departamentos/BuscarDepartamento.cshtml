@@ -1,0 +1,23 @@
+﻿@using MVCREAL.Models
+@model Departamento
+@{
+    ViewBag.Title = "BuscarDepartamento";
+}
+
+<h2>BuscarDepartamento</h2>
+
+<form method="post">
+    <input type="number" name="num" class="form-control" placeholder="Numero de departamento" />
+    <br />
+    <button type="submit" class="btn btn-success">Buscar Departamento</button>
+</form>
+
+<hr />
+@if(Model != null)
+{
+    <table class="table table-bordered">
+        <tr> <td>Numero:</td><td>@Model.Numero</td></tr>
+        <tr><td>Nombre:</td><td>@Model.Nombre</td></tr>
+        <tr><td>Localidad:</td><td>@Model.Localidad</td></tr>
+    </table>
+}
