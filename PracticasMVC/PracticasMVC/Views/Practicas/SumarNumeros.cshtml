@@ -18,9 +18,9 @@
                 method: "POST",
                 url: '@Url.Action("Sumar")', //Llamada del método C# partiendo desde la ruta que acciona el GET
                 data: valores,
-                success: function (data) {
-                    console.log(data);
-                    $("#resultado").text(data);
+                success: function (algo) {
+                    console.log(algo);
+                    $("#resultado").text(algo);
                 }
             });
         });

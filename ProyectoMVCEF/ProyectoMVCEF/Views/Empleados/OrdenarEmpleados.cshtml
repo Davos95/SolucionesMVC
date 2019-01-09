@@ -1,0 +1,40 @@
+﻿@using ProyectoMVCEF.Models
+
+@{
+    ViewBag.Title = "OrdenarEmpleados";
+}
+
+@{ 
+    List<EMP> empleados = ViewBag.Empleados;
+    
+}
+<h2>OrdenarEmpleados</h2>
+
+<table>
+    <tr>
+        <th>
+            @if (ViewBag.orden is null || ViewBag.orden == 1)
+            {
+                @Html.ActionLink("Apellido", "OrdenarEmpleados", "Empleados", new { ordenGet = 0 }, null)
+            }
+            else
+            {
+                @Html.ActionLink("Apellido", "OrdenarEmpleados", "Empleados", new { ordenGet = 1 }, null)
+            }
+        </th>
+        <th>
+            Oficio
+        </th>
+        <th>
+            Salario
+        </th>
+    </tr>
+    @foreach (EMP ap in empleados)
+    {
+        <tr>
+            <td>@ap.APELLIDO</td>
+            <td>@ap.OFICIO</td>
+            <td>@ap.SALARIO</td>
+        </tr>
+    }
+</table>

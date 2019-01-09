@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HOSPITALModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="DEPT">
+    <Key>
+      <PropertyRef Name="DEPT_NO" />
+    </Key>
+    <Property Name="DEPT_NO" Type="int" Nullable="false" />
+    <Property Name="DNOMBRE" Type="nvarchar" MaxLength="50" />
+    <Property Name="LOC" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="DOCTOR">
+    <Key>
+      <PropertyRef Name="DOCTOR_NO" />
+    </Key>
+    <Property Name="HOSPITAL_COD" Type="nvarchar" MaxLength="50" />
+    <Property Name="DOCTOR_NO" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="APELLIDO" Type="nvarchar" MaxLength="50" />
+    <Property Name="ESPECIALIDAD" Type="nvarchar" MaxLength="50" />
+    <Property Name="SALARIO" Type="int" />
+  </EntityType>
+  <EntityType Name="EMP">
+    <Key>
+      <PropertyRef Name="EMP_NO" />
+    </Key>
+    <Property Name="EMP_NO" Type="int" Nullable="false" />
+    <Property Name="APELLIDO" Type="nvarchar" MaxLength="50" />
+    <Property Name="OFICIO" Type="nvarchar" MaxLength="50" />
+    <Property Name="DIR" Type="int" />
+    <Property Name="FECHA_ALT" Type="datetime" />
+    <Property Name="SALARIO" Type="int" />
+    <Property Name="COMISION" Type="int" />
+    <Property Name="DEPT_NO" Type="int" />
+  </EntityType>
+  <EntityType Name="ENFERMO">
+    <Key>
+      <PropertyRef Name="INSCRIPCION" />
+    </Key>
+    <Property Name="INSCRIPCION" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="APELLIDO" Type="nvarchar" MaxLength="50" />
+    <Property Name="DIRECCION" Type="nvarchar" MaxLength="50" />
+    <Property Name="FECHA_NAC" Type="datetime" />
+    <Property Name="S" Type="nvarchar" MaxLength="50" />
+    <Property Name="NSS" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <Function Name="ELIMINARENFERMO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="INSCRIPCION" Type="int" Mode="In" />
+  </Function>
+  <Function Name="MOSTRARENFERMOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="PAGINARDOCTORES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="POSICION" Type="int" Mode="In" />
+  </Function>
+  <Function Name="PAGINAREMPLEADOSSIMPLE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="POSICION" Type="int" Mode="In" />
+  </Function>
+  <EntityContainer Name="HOSPITALModelStoreContainer">
+    <EntitySet Name="DEPT" EntityType="Self.DEPT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DOCTOR" EntityType="Self.DOCTOR" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EMP" EntityType="Self.EMP" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ENFERMO" EntityType="Self.ENFERMO" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>
