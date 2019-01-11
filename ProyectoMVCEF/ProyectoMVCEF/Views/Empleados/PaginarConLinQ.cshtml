@@ -1,0 +1,47 @@
+﻿@using ProyectoMVCEF.Models
+@model List<TODOSEMPLEADOS>
+
+@{
+    ViewBag.Title = "PaginarConLinQ";
+}
+@{ 
+    int registros = ViewBag.TotalRegistros;
+    int numPagina = 1;
+}
+<h2>PaginarConLinQ</h2>
+
+@if(Model != null)
+{
+
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Apellido</th>
+                <th>Cargo</th>
+                <th>Salario</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (TODOSEMPLEADOS emp in Model)
+            {
+                <tr>
+                    <td>@emp.APELLIDO</td>
+                    <td>@emp.CARGO</td>
+                    <td>@emp.SALARIO</td>
+                </tr>
+            }
+            <tr>
+                <td colspan="3">
+                    @*@Html.Raw(ViewBag.html)*@
+                    @for (int i = 1; i < registros; i+=3)
+                    {
+                        <span>
+                            @Html.ActionLink(numPagina.ToString(),"PaginarConLinQ", new {posicion = i  },null)
+                        </span>
+                        numPagina++;
+                    }
+                </td>
+            </tr>
+        </tbody>
+    </table>
+}

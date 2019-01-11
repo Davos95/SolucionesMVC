@@ -13,9 +13,8 @@ namespace ProyectoMVCEF.Models
 {
 
 using System;
-    using System.Collections.Generic;
     
-public partial class ENFERMO
+public partial class MOSTRARENFERMOS1_Result
 {
 
     public string INSCRIPCION { get; set; }

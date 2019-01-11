@@ -13,22 +13,19 @@ namespace ProyectoMVCEF.Models
 {
 
 using System;
-    using System.Collections.Generic;
     
-public partial class ENFERMO
+public partial class PAGINARDOCTORES1_Result
 {
 
-    public string INSCRIPCION { get; set; }
+    public Nullable<long> POSICION { get; set; }
 
     public string APELLIDO { get; set; }
 
-    public string DIRECCION { get; set; }
+    public Nullable<int> SALARIO { get; set; }
 
-    public Nullable<System.DateTime> FECHA_NAC { get; set; }
+    public string NOMBRE { get; set; }
 
-    public string S { get; set; }
-
-    public string NSS { get; set; }
+    public string ESPECIALIDAD { get; set; }
 
 }
 

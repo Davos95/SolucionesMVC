@@ -184,5 +184,45 @@ namespace ProyectoMVCEF.Controllers
 
             return View(empleados);
         }
+
+        public ActionResult PaginarConLinQ(int? posicion)
+        {
+            if(posicion == null)
+            {
+                posicion = 1;
+            }
+            
+            int totalRegistros = 0;
+            List<TODOSEMPLEADOS> empleados = this.helper.GetPaginarLinQ(posicion.GetValueOrDefault(), ref totalRegistros);
+
+            String html = "";
+            int numPagina = 1;
+            for (int i = 1; i < totalRegistros; i+=3)
+            {
+                html += "<a href='PaginarConLinQ?posicion=" + i + "' class='btn btn-deafult'>" + numPagina + "</a>";
+                numPagina++;
+            }
+            ViewBag.html = html;
+            ViewBag.TotalRegistros = totalRegistros;
+            return View(empleados);
+        }
+        public ActionResult SeleccionMultiple()
+        {
+            List<DEPT> departamentos = this.helper.GetDepartamentos();
+            ViewBag.Departamentos = departamentos;
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult SeleccionMultiple(int[] departamento)
+        {
+            List<DEPT> departamentos = this.helper.GetDepartamentos();
+            ViewBag.Departamentos = departamentos;
+            List<EMP> empleados = this.helper.GetEmpleadosDepartamentoMultiple(departamento);
+
+            return View(empleados);
+        }
     }
+
+    
 }

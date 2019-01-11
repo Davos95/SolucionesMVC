@@ -67,8 +67,20 @@ AS
 	AND POSICION < (@POSICION + 3);
 GO	
 
+    create VIEW TODOSEMPLEADOS
+AS
+	SELECT ISNULL(IDEMPLEADO,0) AS IDEMPLEADO, APELLIDO, CARGO, SALARIO FROM 
+	(
+		SELECT EMP_NO AS IDEMPLEADO, APELLIDO, OFICIO AS CARGO, SALARIO FROM EMP
+		UNION ALL
+		SELECT DOCTOR_NO, APELLIDO, ESPECIALIDAD, SALARIO FROM DOCTOR
+		UNION ALL
+		SELECT EMPLEADO_NO, APELLIDO, FUNCION, SALARIO FROM PLANTILLA
+	) CONSULTA
+GO
 */
 #endregion
+
 namespace ProyectoMVCEF.Models
 {
     public class HelperEmpleados
@@ -231,6 +243,23 @@ namespace ProyectoMVCEF.Models
             totalRegistros = (int)pamRegistros.Value;
 
             return empleados;
+        }
+
+        public List<TODOSEMPLEADOS> GetPaginarLinQ(int posicion, ref int totalRegistros)
+        {
+            totalRegistros = this.entity.TODOSEMPLEADOS.Count();
+            var consulta = this.entity.TODOSEMPLEADOS.OrderBy(x => x.APELLIDO).Skip(posicion).Take(3);
+            List<TODOSEMPLEADOS> empleados = consulta.ToList();
+            return empleados;
+        }
+
+        public List<EMP> GetEmpleadosDepartamentoMultiple(int[] departamentos)
+        {
+            var consulta = from datos in entity.EMP
+                           where departamentos.Contains((int)datos.DEPT_NO)
+                           select datos;
+
+            return consulta.ToList();
         }
     }
 }

@@ -15,20 +15,18 @@ namespace ProyectoMVCEF.Models
 using System;
     using System.Collections.Generic;
     
-public partial class ENFERMO
+public partial class HOSPITAL
 {
 
-    public string INSCRIPCION { get; set; }
+    public string HOSPITAL_COD { get; set; }
 
-    public string APELLIDO { get; set; }
+    public string NOMBRE { get; set; }
 
     public string DIRECCION { get; set; }
 
-    public Nullable<System.DateTime> FECHA_NAC { get; set; }
+    public string TELEFONO { get; set; }
 
-    public string S { get; set; }
-
-    public string NSS { get; set; }
+    public string NUM_CAMA { get; set; }
 
 }
 

@@ -1,25 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="HOSPITALModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-  <EntityType Name="EMP">
-    <Key>
-      <PropertyRef Name="EMP_NO" />
-    </Key>
-    <Property Name="EMP_NO" Type="Int32" Nullable="false" />
-    <Property Name="APELLIDO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="OFICIO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="DIR" Type="Int32" />
-    <Property Name="FECHA_ALT" Type="DateTime" Precision="3" />
-    <Property Name="SALARIO" Type="Int32" />
-    <Property Name="COMISION" Type="Int32" />
-    <Property Name="DEPT_NO" Type="Int32" />
-  </EntityType>
   <EntityContainer Name="EntidadHospital" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="EMP" EntityType="Self.EMP" />
-    <EntitySet Name="DEPT" EntityType="HOSPITALModel.DEPT" />
     <FunctionImport Name="ELIMINARENFERMO">
       <Parameter Name="INSCRIPCION" Mode="In" Type="Int32" />
     </FunctionImport>
-    <EntitySet Name="ENFERMO" EntityType="HOSPITALModel.ENFERMO" />
     <FunctionImport Name="MOSTRARENFERMOS" EntitySet="ENFERMO" ReturnType="Collection(HOSPITALModel.ENFERMO)" />
     <FunctionImport Name="PAGINAREMPLEADOSSIMPLE" ReturnType="Collection(HOSPITALModel.PAGINAREMPLEADOSSIMPLE_Result)">
       <Parameter Name="POSICION" Mode="In" Type="Int32" />
@@ -27,7 +11,6 @@
     <FunctionImport Name="PAGINARDOCTORES" ReturnType="Collection(HOSPITALModel.PAGINARDOCTORES_Result)">
       <Parameter Name="POSICION" Mode="In" Type="Int32" />
     </FunctionImport>
-    <EntitySet Name="DOCTOR" EntityType="HOSPITALModel.DOCTOR" />
     <FunctionImport Name="DATOSDEPARTAMENTOS">
       <Parameter Name="DEPTNO" Mode="In" Type="Int32" />
       <Parameter Name="PERSONAS" Mode="InOut" Type="Int32" />
@@ -43,7 +26,101 @@
       <Parameter Name="SALARIO" Mode="In" Type="Int32" />
       <Parameter Name="TOTALREGISTROS" Mode="InOut" Type="Int32" />
     </FunctionImport>
+    <EntitySet Name="TODOSEMPLEADOS" EntityType="HOSPITALModel.TODOSEMPLEADOS" />
+    <EntitySet Name="DOCTOR" EntityType="HOSPITALModel.DOCTOR" />
+    <EntitySet Name="PLANTILLA" EntityType="HOSPITALModel.PLANTILLA" />
+    <EntitySet Name="EMP" EntityType="HOSPITALModel.EMP" />
+    <EntitySet Name="DEPT" EntityType="HOSPITALModel.DEPT" />
+    <EntitySet Name="ENFERMO" EntityType="HOSPITALModel.ENFERMO" />
+    <FunctionImport Name="ELIMINARENFERMO1">
+      <Parameter Name="INSCRIPCION" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="MOSTRARENFERMOS1" ReturnType="Collection(HOSPITALModel.MOSTRARENFERMOS1_Result)" />
+    <FunctionImport Name="PAGINARDOCTORES1" ReturnType="Collection(HOSPITALModel.PAGINARDOCTORES1_Result)">
+      <Parameter Name="POSICION" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="PAGINAREMPLEADOSSIMPLE1" ReturnType="Collection(HOSPITALModel.PAGINAREMPLEADOSSIMPLE1_Result)">
+      <Parameter Name="POSICION" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="HOSPITAL" EntityType="HOSPITALModel.HOSPITAL" />
   </EntityContainer>
+  <ComplexType Name="PAGINAREMPLEADOSSIMPLE_Result">
+    <Property Type="Int64" Name="POSICION" Nullable="true" />
+    <Property Type="String" Name="APELLIDO" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="OFICIO" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="SALARIO" Nullable="true" />
+    <Property Type="String" Name="DNOMBRE" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LOC" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="PAGINARDOCTORES_Result">
+    <Property Type="Int64" Name="POSICION" Nullable="true" />
+    <Property Type="String" Name="APELLIDO" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="SALARIO" Nullable="true" />
+    <Property Type="String" Name="NOMBRE" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ESPECIALIDAD" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="PAGINACIONEMPLEADOSAGRUPADOS_Result">
+    <Property Type="Int64" Name="POSICION" Nullable="true" />
+    <Property Type="String" Name="APELLIDO" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="SALARIO" Nullable="true" />
+    <Property Type="String" Name="OFICIO" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="PAGINACIONDOCTORESAGRUPADOS_Result">
+    <Property Type="Int64" Name="POSICION" Nullable="true" />
+    <Property Type="String" Name="APELLIDO" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CARGO" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="SALARIO" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="PAGINACIONDOCTORESAGRUPADOS_Result1">
+    <Property Type="Int64" Name="POSICION" Nullable="true" />
+    <Property Type="String" Name="APELLIDO" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CARGO" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="SALARIO" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="TODOSEMPLEADOS">
+    <Key>
+      <PropertyRef Name="IDEMPLEADO" />
+    </Key>
+    <Property Name="IDEMPLEADO" Type="Int32" Nullable="false" />
+    <Property Name="APELLIDO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CARGO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SALARIO" Type="Int32" />
+  </EntityType>
+  <EntityType Name="DOCTOR">
+    <Key>
+      <PropertyRef Name="DOCTOR_NO" />
+    </Key>
+    <Property Name="HOSPITAL_COD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DOCTOR_NO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="APELLIDO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ESPECIALIDAD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SALARIO" Type="Int32" />
+  </EntityType>
+  <EntityType Name="PLANTILLA">
+    <Key>
+      <PropertyRef Name="EMPLEADO_NO" />
+    </Key>
+    <Property Name="HOSPITAL_COD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SALA_COD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EMPLEADO_NO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="APELLIDO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FUNCION" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="T" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SALARIO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="EMP">
+    <Key>
+      <PropertyRef Name="EMP_NO" />
+    </Key>
+    <Property Name="EMP_NO" Type="Int32" Nullable="false" />
+    <Property Name="APELLIDO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="OFICIO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DIR" Type="Int32" />
+    <Property Name="FECHA_ALT" Type="DateTime" Precision="3" />
+    <Property Name="SALARIO" Type="Int32" />
+    <Property Name="COMISION" Type="Int32" />
+    <Property Name="DEPT_NO" Type="Int32" />
+  </EntityType>
   <EntityType Name="DEPT">
     <Key>
       <PropertyRef Name="DEPT_NO" />
@@ -63,7 +140,22 @@
     <Property Name="S" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="NSS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
-  <ComplexType Name="PAGINAREMPLEADOSSIMPLE_Result">
+  <ComplexType Name="MOSTRARENFERMOS1_Result">
+    <Property Type="String" Name="INSCRIPCION" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="APELLIDO" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="DIRECCION" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="FECHA_NAC" Nullable="true" Precision="23" />
+    <Property Type="String" Name="S" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="NSS" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="PAGINARDOCTORES1_Result">
+    <Property Type="Int64" Name="POSICION" Nullable="true" />
+    <Property Type="String" Name="APELLIDO" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="SALARIO" Nullable="true" />
+    <Property Type="String" Name="NOMBRE" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ESPECIALIDAD" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="PAGINAREMPLEADOSSIMPLE1_Result">
     <Property Type="Int64" Name="POSICION" Nullable="true" />
     <Property Type="String" Name="APELLIDO" Nullable="true" MaxLength="50" />
     <Property Type="String" Name="OFICIO" Nullable="true" MaxLength="50" />
@@ -71,39 +163,14 @@
     <Property Type="String" Name="DNOMBRE" Nullable="true" MaxLength="50" />
     <Property Type="String" Name="LOC" Nullable="true" MaxLength="50" />
   </ComplexType>
-  <ComplexType Name="PAGINARDOCTORES_Result">
-    <Property Type="Int64" Name="POSICION" Nullable="true" />
-    <Property Type="String" Name="APELLIDO" Nullable="true" MaxLength="50" />
-    <Property Type="Int32" Name="SALARIO" Nullable="true" />
-    <Property Type="String" Name="NOMBRE" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="ESPECIALIDAD" Nullable="true" MaxLength="50" />
-  </ComplexType>
-  <EntityType Name="DOCTOR">
+  <EntityType Name="HOSPITAL">
     <Key>
-      <PropertyRef Name="DOCTOR_NO" />
+      <PropertyRef Name="HOSPITAL_COD" />
     </Key>
-    <Property Name="HOSPITAL_COD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="DOCTOR_NO" Type="Int32" Nullable="false" />
-    <Property Name="APELLIDO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="ESPECIALIDAD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="SALARIO" Type="Int32" />
+    <Property Name="HOSPITAL_COD" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DIRECCION" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TELEFONO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NUM_CAMA" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
-  <ComplexType Name="PAGINACIONEMPLEADOSAGRUPADOS_Result">
-    <Property Type="Int64" Name="POSICION" Nullable="true" />
-    <Property Type="String" Name="APELLIDO" Nullable="true" MaxLength="50" />
-    <Property Type="Int32" Name="SALARIO" Nullable="true" />
-    <Property Type="String" Name="OFICIO" Nullable="true" MaxLength="50" />
-  </ComplexType>
-  <ComplexType Name="PAGINACIONDOCTORESAGRUPADOS_Result">
-    <Property Type="Int64" Name="POSICION" Nullable="true" />
-    <Property Type="String" Name="APELLIDO" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="CARGO" Nullable="true" MaxLength="50" />
-    <Property Type="Int32" Name="SALARIO" Nullable="true" />
-  </ComplexType>
-  <ComplexType Name="PAGINACIONDOCTORESAGRUPADOS_Result1">
-    <Property Type="Int64" Name="POSICION" Nullable="true" />
-    <Property Type="String" Name="APELLIDO" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="CARGO" Nullable="true" MaxLength="50" />
-    <Property Type="Int32" Name="SALARIO" Nullable="true" />
-  </ComplexType>
 </Schema>
