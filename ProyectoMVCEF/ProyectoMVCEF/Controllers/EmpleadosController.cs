@@ -128,5 +128,61 @@ namespace ProyectoMVCEF.Controllers
             PAGINARDOCTORES_Result doctor = helper.GetDoctoresPaginados(posicion.GetValueOrDefault());
             return View(doctor);
         }
+
+        public ActionResult ParametrosSalida()
+        {
+            return View();
+        }
+        
+        [HttpPost]
+        public ActionResult ParametrosSalida(int departamento)
+        {
+            ResumenEmpleados resumen = this.helper.GetResumenParametrosSalida(departamento);
+            return View(resumen);
+        }
+
+        public ActionResult PaginarGrupo(int? posicion)
+        {
+            if(posicion == null)
+            {
+                posicion = 1;
+            }
+
+            int totalRegistros = 0;
+            List<PAGINACIONEMPLEADOSAGRUPADOS_Result> empleados = this.helper.GetEmpleadosAgrupados(posicion.GetValueOrDefault(), ref totalRegistros);
+            
+            ViewBag.TotalRegistros = totalRegistros;
+            return View(empleados);
+        }
+
+        public ActionResult PaginarPorSalario(int? posicion, int? salario)
+        {
+            if(salario == null)
+            {
+                salario = 0;
+            }
+            if(posicion == null)
+            {
+                posicion = 1;
+            }
+            int totalRegistros = 0;
+            List<PAGINACIONDOCTORESAGRUPADOS_Result1> empleados = this.helper.GetTodosLosEmpleados(posicion.GetValueOrDefault(), salario.GetValueOrDefault(), ref totalRegistros);
+            ViewBag.TotalRegistros = totalRegistros;
+            ViewBag.Salario = salario.GetValueOrDefault();
+            return View(empleados);
+        }
+
+        [HttpPost]
+        public ActionResult PaginarPorSalario(int? posicion, int salario)
+        {
+            posicion = 1;
+
+            int totalRegistros = 0;
+            List<PAGINACIONDOCTORESAGRUPADOS_Result1> empleados = this.helper.GetTodosLosEmpleados(posicion.GetValueOrDefault(), salario, ref totalRegistros);
+            ViewBag.TotalRegistros = totalRegistros;
+            ViewBag.Salario = salario;
+
+            return View(empleados);
+        }
     }
 }

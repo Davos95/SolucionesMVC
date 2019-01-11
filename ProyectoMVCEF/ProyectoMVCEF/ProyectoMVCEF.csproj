@@ -191,6 +191,15 @@
     </Compile>
     <Compile Include="Models\HelperEmpleados.cs" />
     <Compile Include="Models\HelperEnfermos.cs" />
+    <Compile Include="Models\PAGINACIONDOCTORESAGRUPADOS_Result.cs">
+      <DependentUpon>EntidadHospital.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PAGINACIONDOCTORESAGRUPADOS_Result1.cs">
+      <DependentUpon>EntidadHospital.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PAGINACIONEMPLEADOSAGRUPADOS_Result.cs">
+      <DependentUpon>EntidadHospital.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\PAGINARDOCTORES_Result.cs">
       <DependentUpon>EntidadHospital.tt</DependentUpon>
     </Compile>
@@ -262,6 +271,9 @@
     <Content Include="Views\Enfermo\EliminarEnfermos.cshtml" />
     <Content Include="Views\Empleados\PaginarEmpleadosSimple.cshtml" />
     <Content Include="Views\Empleados\PaginarDoctoresSimple.cshtml" />
+    <Content Include="Views\Empleados\ParametrosSalida.cshtml" />
+    <Content Include="Views\Empleados\PaginarGrupo.cshtml" />
+    <Content Include="Views\Empleados\PaginarPorSalario.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

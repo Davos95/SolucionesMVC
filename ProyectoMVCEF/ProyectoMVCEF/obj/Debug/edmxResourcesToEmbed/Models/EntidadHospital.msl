@@ -24,7 +24,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="ELIMINARENFERMO" FunctionName="HOSPITALModel.Store.ELIMINARENFERMO" />
     <EntitySetMapping Name="ENFERMO">
       <EntityTypeMapping TypeName="HOSPITALModel.ENFERMO">
         <MappingFragment StoreEntitySet="ENFERMO">
@@ -37,30 +36,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="MOSTRARENFERMOS" FunctionName="HOSPITALModel.Store.MOSTRARENFERMOS" />
-    <FunctionImportMapping FunctionImportName="PAGINAREMPLEADOSSIMPLE" FunctionName="HOSPITALModel.Store.PAGINAREMPLEADOSSIMPLE">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="HOSPITALModel.PAGINAREMPLEADOSSIMPLE_Result">
-          <ScalarProperty Name="POSICION" ColumnName="POSICION" />
-          <ScalarProperty Name="APELLIDO" ColumnName="APELLIDO" />
-          <ScalarProperty Name="OFICIO" ColumnName="OFICIO" />
-          <ScalarProperty Name="SALARIO" ColumnName="SALARIO" />
-          <ScalarProperty Name="DNOMBRE" ColumnName="DNOMBRE" />
-          <ScalarProperty Name="LOC" ColumnName="LOC" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="PAGINARDOCTORES" FunctionName="HOSPITALModel.Store.PAGINARDOCTORES">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="HOSPITALModel.PAGINARDOCTORES_Result">
-          <ScalarProperty Name="POSICION" ColumnName="POSICION" />
-          <ScalarProperty Name="APELLIDO" ColumnName="APELLIDO" />
-          <ScalarProperty Name="SALARIO" ColumnName="SALARIO" />
-          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
-          <ScalarProperty Name="ESPECIALIDAD" ColumnName="ESPECIALIDAD" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
     <EntitySetMapping Name="DOCTOR">
       <EntityTypeMapping TypeName="HOSPITALModel.DOCTOR">
         <MappingFragment StoreEntitySet="DOCTOR">
@@ -72,5 +47,26 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="DATOSDEPARTAMENTOS" FunctionName="HOSPITALModel.Store.DATOSDEPARTAMENTOS" />
+    <FunctionImportMapping FunctionImportName="PAGINACIONEMPLEADOSAGRUPADOS" FunctionName="HOSPITALModel.Store.PAGINACIONEMPLEADOSAGRUPADOS">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HOSPITALModel.PAGINACIONEMPLEADOSAGRUPADOS_Result">
+          <ScalarProperty Name="POSICION" ColumnName="POSICION" />
+          <ScalarProperty Name="APELLIDO" ColumnName="APELLIDO" />
+          <ScalarProperty Name="SALARIO" ColumnName="SALARIO" />
+          <ScalarProperty Name="OFICIO" ColumnName="OFICIO" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PAGINACIONDOCTORESAGRUPADOS" FunctionName="HOSPITALModel.Store.PAGINACIONDOCTORESAGRUPADOS">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HOSPITALModel.PAGINACIONDOCTORESAGRUPADOS_Result1">
+          <ScalarProperty Name="POSICION" ColumnName="POSICION" />
+          <ScalarProperty Name="APELLIDO" ColumnName="APELLIDO" />
+          <ScalarProperty Name="CARGO" ColumnName="CARGO" />
+          <ScalarProperty Name="SALARIO" ColumnName="SALARIO" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

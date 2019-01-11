@@ -1,0 +1,40 @@
+﻿@using ProyectoMVCEF.Models
+@model List<PAGINACIONDOCTORESAGRUPADOS_Result1>
+
+@{
+    ViewBag.Title = "PaginarPorSalario";
+    int numeroPaginacion = 1;
+}
+
+<h2>Paginar por salario</h2>
+
+<form method="post">
+    <label>Salario: </label>
+    <input type="number" name="salario" value="0" min="0"  class="form-control"/>
+    <button type="submit" class="btn-default">BUSCAR</button>
+</form>
+<table class="table table-bordered">
+    <tr>
+        <th>APELLIDO</th>
+        <th>SALARIO</th>
+        <th>OFICIO</th>
+    </tr>
+    @foreach (PAGINACIONDOCTORESAGRUPADOS_Result1 emp in Model)
+    {
+        <tr>
+            <td>@emp.APELLIDO</td>
+            <td>@emp.CARGO</td>
+            <td>@emp.SALARIO</td>
+        </tr>
+    }
+    <tr>
+        <td colspan="3">
+            @for (int i = 1; i < ViewBag.TotalRegistros; i += 3)
+            {
+                @Html.ActionLink(numeroPaginacion.ToString()+" | ", "PaginarPorSalario", "Empleados", new { posicion = i, salario = ViewBag.Salario  }, null);
+                numeroPaginacion += 1;
+            }
+        </td>
+    </tr>
+
+</table>

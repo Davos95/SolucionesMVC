@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core.Objects;
 using System.Linq;
 using System.Web;
 
-#region
+#region PROCEDIMIENTOS ALMACENADOS
 /*
 ALTER PROCEDURE PAGINAREMPLEADOSSIMPLE
 (@POSICION INT)
@@ -26,6 +27,45 @@ AS
 		ON D.HOSPITAL_COD = H.HOSPITAL_COD) CONSULTA
 		WHERE POSICION = @POSICION;
 GO
+
+CREATE PROCEDURE DATOSDEPARTAMENTOS
+(@DEPTNO INT, @PERSONAS INT OUT, @SUMA INT OUT,@MEDIA INT OUT)
+AS
+	SELECT @PERSONAS = COUNT(EMP_NO), @SUMA = SUM(SALARIO), @MEDIA = AVG(SALARIO)
+	FROM EMP
+	WHERE DEPT_NO = @DEPTNO
+GO
+
+
+ALTER PROCEDURE PAGINACIONEMPLEADOSAGRUPADOS
+(@POSICION INT, @TOTALREGISTROS INT OUT)
+AS
+	SELECT @TOTALREGISTROS = COUNT(EMP_NO) FROM EMP
+	SELECT * FROM
+	(SELECT ROW_NUMBER() OVER (ORDER BY APELLIDO) AS POSICION, APELLIDO, SALARIO, OFICIO
+	 FROM EMP
+	 ) CONSULTA
+	 WHERE POSICION >= @POSICION
+	 AND POSICION < (@POSICION + 3);
+GO
+
+
+    ALTER PROCEDURE PAGINACIONDOCTORESAGRUPADOS
+(@POSICION INT, @SALARIO INT, @TOTALREGISTROS INT OUT)
+AS
+	if(@SALARIO = NULL)
+	BEGIN
+	 SET @SALARIO = 5
+	end
+	SELECT @TOTALREGISTROS = COUNT(*) FROM TODOSLOSEMPLEADOS WHERE SALARIO >= @SALARIO;
+	SELECT * FROM (
+		SELECT ROW_NUMBER() OVER (ORDER BY APELLIDO) AS POSICION, *
+		FROM TODOSLOSEMPLEADOS
+		WHERE SALARIO >= @SALARIO
+	) CONSULTA
+	WHERE POSICION >= @POSICION
+	AND POSICION < (@POSICION + 3);
+GO	
 
 */
 #endregion
@@ -146,6 +186,51 @@ namespace ProyectoMVCEF.Models
         {
             int datos = this.entity.DOCTOR.Count();
             return datos;
+        }
+
+        public ResumenEmpleados GetResumenParametrosSalida(int departamento)
+        {
+            //Los parametros de salida con entity framework se llaman con objetos de la clase ObjectParameter
+            //Debemos indicar el nombre del parametro (sin @) y su tipo de dato
+            ObjectParameter pamPersonas = new ObjectParameter("PERSONAS", typeof(int));
+            ObjectParameter pamMedia = new ObjectParameter("MEDIA", typeof(int));
+            ObjectParameter pamSuma = new ObjectParameter("SUMA", typeof(int));
+            this.entity.DATOSDEPARTAMENTOS(departamento, pamPersonas, pamSuma, pamMedia);
+
+            //COMPROBAR SI DEVUELVE VALOR EN LOS PARAMETROS
+            if(pamSuma.Value == System.DBNull.Value)
+            {
+                return null; 
+            }
+            ResumenEmpleados resumen = new ResumenEmpleados();
+            resumen.Personas = (int)pamPersonas.Value;
+            resumen.MediaSalarial = (int)pamMedia.Value;
+            resumen.SumaSalarial = (int)pamSuma.Value;
+            return resumen;
+        }
+
+        //DEVOLVEMOS UNA COLECCION DE EMP (COMPLEX TYPE)
+        public List<PAGINACIONEMPLEADOSAGRUPADOS_Result> GetEmpleadosAgrupados(int posicion, ref int totalRegistros)
+        {
+            ObjectParameter pamRegistros = new ObjectParameter("TOTALREGISTROS", typeof(int));
+
+            //DEBERIAOS EXTRAER LOS DATOS DE LOS PROCEDIMIENTOS EN DOS PASOS
+            var datos = this.entity.PAGINACIONEMPLEADOSAGRUPADOS(posicion, pamRegistros);
+            
+            
+            List<PAGINACIONEMPLEADOSAGRUPADOS_Result> empleados = datos.ToList();
+            totalRegistros = (int)pamRegistros.Value;
+            return empleados;
+        }
+
+        public List<PAGINACIONDOCTORESAGRUPADOS_Result1> GetTodosLosEmpleados(int posicion, int salario, ref int totalRegistros)
+        {
+            ObjectParameter pamRegistros = new ObjectParameter("TOTALREGISTROS", typeof(int));
+            var datos = this.entity.PAGINACIONDOCTORESAGRUPADOS(posicion, salario, pamRegistros);
+            List<PAGINACIONDOCTORESAGRUPADOS_Result1> empleados = datos.ToList();
+            totalRegistros = (int)pamRegistros.Value;
+
+            return empleados;
         }
     }
 }
