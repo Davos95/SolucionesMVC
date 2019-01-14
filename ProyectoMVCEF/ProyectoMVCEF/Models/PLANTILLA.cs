@@ -18,7 +18,7 @@ using System;
 public partial class PLANTILLA
 {
 
-    public string HOSPITAL_COD { get; set; }
+    public Nullable<int> HOSPITAL_COD { get; set; }
 
     public string SALA_COD { get; set; }
 

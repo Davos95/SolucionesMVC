@@ -28,7 +28,6 @@
     </FunctionImport>
     <EntitySet Name="TODOSEMPLEADOS" EntityType="HOSPITALModel.TODOSEMPLEADOS" />
     <EntitySet Name="DOCTOR" EntityType="HOSPITALModel.DOCTOR" />
-    <EntitySet Name="PLANTILLA" EntityType="HOSPITALModel.PLANTILLA" />
     <EntitySet Name="EMP" EntityType="HOSPITALModel.EMP" />
     <EntitySet Name="DEPT" EntityType="HOSPITALModel.DEPT" />
     <EntitySet Name="ENFERMO" EntityType="HOSPITALModel.ENFERMO" />
@@ -42,7 +41,9 @@
     <FunctionImport Name="PAGINAREMPLEADOSSIMPLE1" ReturnType="Collection(HOSPITALModel.PAGINAREMPLEADOSSIMPLE1_Result)">
       <Parameter Name="POSICION" Mode="In" Type="Int32" />
     </FunctionImport>
+    <FunctionImport Name="MOSTRARHOSPITALES" EntitySet="HOSPITAL" ReturnType="Collection(HOSPITALModel.HOSPITAL)" />
     <EntitySet Name="HOSPITAL" EntityType="HOSPITALModel.HOSPITAL" />
+    <EntitySet Name="PLANTILLA" EntityType="HOSPITALModel.PLANTILLA" />
   </EntityContainer>
   <ComplexType Name="PAGINAREMPLEADOSSIMPLE_Result">
     <Property Type="Int64" Name="POSICION" Nullable="true" />
@@ -95,18 +96,6 @@
     <Property Name="APELLIDO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="ESPECIALIDAD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="SALARIO" Type="Int32" />
-  </EntityType>
-  <EntityType Name="PLANTILLA">
-    <Key>
-      <PropertyRef Name="EMPLEADO_NO" />
-    </Key>
-    <Property Name="HOSPITAL_COD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="SALA_COD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="EMPLEADO_NO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="APELLIDO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="FUNCION" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="T" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="SALARIO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="EMP">
     <Key>
@@ -163,14 +152,33 @@
     <Property Type="String" Name="DNOMBRE" Nullable="true" MaxLength="50" />
     <Property Type="String" Name="LOC" Nullable="true" MaxLength="50" />
   </ComplexType>
+  <ComplexType Name="MOSTRARHOSPITALES_Result">
+    <Property Type="String" Name="HOSPITAL_COD" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="NOMBRE" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="DIRECCION" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TELEFONO" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="NUM_CAMA" Nullable="true" MaxLength="50" />
+  </ComplexType>
   <EntityType Name="HOSPITAL">
     <Key>
       <PropertyRef Name="HOSPITAL_COD" />
     </Key>
-    <Property Name="HOSPITAL_COD" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="HOSPITAL_COD" Type="Int32" Nullable="false" />
     <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="DIRECCION" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="TELEFONO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="NUM_CAMA" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="PLANTILLA">
+    <Key>
+      <PropertyRef Name="EMPLEADO_NO" />
+    </Key>
+    <Property Name="HOSPITAL_COD" Type="Int32" />
+    <Property Name="SALA_COD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EMPLEADO_NO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="APELLIDO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FUNCION" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="T" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SALARIO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
 </Schema>

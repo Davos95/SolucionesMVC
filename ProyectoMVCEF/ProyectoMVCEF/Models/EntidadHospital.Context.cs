@@ -39,8 +39,6 @@ public partial class EntidadHospital : DbContext
 
     public virtual DbSet<DOCTOR> DOCTOR { get; set; }
 
-    public virtual DbSet<PLANTILLA> PLANTILLA { get; set; }
-
     public virtual DbSet<EMP> EMP { get; set; }
 
     public virtual DbSet<DEPT> DEPT { get; set; }
@@ -48,6 +46,8 @@ public partial class EntidadHospital : DbContext
     public virtual DbSet<ENFERMO> ENFERMO { get; set; }
 
     public virtual DbSet<HOSPITAL> HOSPITAL { get; set; }
+
+    public virtual DbSet<PLANTILLA> PLANTILLA { get; set; }
 
 
     public virtual int ELIMINARENFERMO(Nullable<int> iNSCRIPCION)
@@ -181,6 +181,20 @@ public partial class EntidadHospital : DbContext
 
 
         return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PAGINAREMPLEADOSSIMPLE1_Result>("PAGINAREMPLEADOSSIMPLE1", pOSICIONParameter);
+    }
+
+
+    public virtual ObjectResult<HOSPITAL> MOSTRARHOSPITALES()
+    {
+
+        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<HOSPITAL>("MOSTRARHOSPITALES");
+    }
+
+
+    public virtual ObjectResult<HOSPITAL> MOSTRARHOSPITALES(MergeOption mergeOption)
+    {
+
+        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<HOSPITAL>("MOSTRARHOSPITALES", mergeOption);
     }
 
 }

@@ -160,6 +160,7 @@
     <Compile Include="Controllers\EnfermoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HospitalController.cs" />
+    <Compile Include="Controllers\ValidacionesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -199,6 +200,9 @@
     <Compile Include="Models\MOSTRARENFERMOS1_Result.cs">
       <DependentUpon>EntidadHospital.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\MOSTRARHOSPITALES_Result.cs">
+      <DependentUpon>EntidadHospital.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\PAGINACIONDOCTORESAGRUPADOS_Result.cs">
       <DependentUpon>EntidadHospital.tt</DependentUpon>
     </Compile>
@@ -220,6 +224,7 @@
     <Compile Include="Models\PAGINAREMPLEADOSSIMPLE_Result.cs">
       <DependentUpon>EntidadHospital.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Persona.cs" />
     <Compile Include="Models\PLANTILLA.cs">
       <DependentUpon>EntidadHospital.tt</DependentUpon>
     </Compile>
@@ -271,6 +276,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\validacion.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -297,6 +303,8 @@
     <Content Include="Views\Empleados\PaginarConLinQ.cshtml" />
     <Content Include="Views\Empleados\SeleccionMultiple.cshtml" />
     <Content Include="Views\Hospital\PlantillaHospital.cshtml" />
+    <Content Include="Views\Validaciones\Correcto.cshtml" />
+    <Content Include="Views\Validaciones\InsertarPersona.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -335,7 +343,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>51212</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:51212/</IISUrl>
+          <IISUrl>http://localhost:51213/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

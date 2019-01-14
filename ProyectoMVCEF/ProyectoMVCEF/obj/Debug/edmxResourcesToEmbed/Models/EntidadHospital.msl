@@ -43,19 +43,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="PLANTILLA">
-      <EntityTypeMapping TypeName="HOSPITALModel.PLANTILLA">
-        <MappingFragment StoreEntitySet="PLANTILLA">
-          <ScalarProperty Name="SALARIO" ColumnName="SALARIO" />
-          <ScalarProperty Name="T" ColumnName="T" />
-          <ScalarProperty Name="FUNCION" ColumnName="FUNCION" />
-          <ScalarProperty Name="APELLIDO" ColumnName="APELLIDO" />
-          <ScalarProperty Name="EMPLEADO_NO" ColumnName="EMPLEADO_NO" />
-          <ScalarProperty Name="SALA_COD" ColumnName="SALA_COD" />
-          <ScalarProperty Name="HOSPITAL_COD" ColumnName="HOSPITAL_COD" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="EMP">
       <EntityTypeMapping TypeName="HOSPITALModel.EMP">
         <MappingFragment StoreEntitySet="EMP">
@@ -127,6 +114,8 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="MOSTRARENFERMOS" FunctionName="HOSPITALModel.Store.MOSTRARENFERMOS" />
+    <FunctionImportMapping FunctionImportName="MOSTRARHOSPITALES" FunctionName="HOSPITALModel.Store.MOSTRARHOSPITALES" />
     <EntitySetMapping Name="HOSPITAL">
       <EntityTypeMapping TypeName="HOSPITALModel.HOSPITAL">
         <MappingFragment StoreEntitySet="HOSPITAL">
@@ -138,6 +127,18 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="MOSTRARENFERMOS" FunctionName="HOSPITALModel.Store.MOSTRARENFERMOS" />
+    <EntitySetMapping Name="PLANTILLA">
+      <EntityTypeMapping TypeName="HOSPITALModel.PLANTILLA">
+        <MappingFragment StoreEntitySet="PLANTILLA">
+          <ScalarProperty Name="SALARIO" ColumnName="SALARIO" />
+          <ScalarProperty Name="T" ColumnName="T" />
+          <ScalarProperty Name="FUNCION" ColumnName="FUNCION" />
+          <ScalarProperty Name="APELLIDO" ColumnName="APELLIDO" />
+          <ScalarProperty Name="EMPLEADO_NO" ColumnName="EMPLEADO_NO" />
+          <ScalarProperty Name="SALA_COD" ColumnName="SALA_COD" />
+          <ScalarProperty Name="HOSPITAL_COD" ColumnName="HOSPITAL_COD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

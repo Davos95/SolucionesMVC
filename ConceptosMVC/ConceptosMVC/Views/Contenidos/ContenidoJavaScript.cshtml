@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "ContenidoJavaScript";
+}
+
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $("#botonImagen").click(function () {
+                //Es absurdo, pero llamamos a un JS de servidor
+                $.getScript("/Contenidos/CodigoJavaScript")
+            });
+        });
+    </script>
+
+}
+<h2>Contenido JavaScript desde Controlles</h2>
+@Html.ActionLink("Volver a Index", "Index", "Contenidos")
+
+<button type="button" id="botonImagen"  >Cambiar Imagen</button>
+
+<img src="~/Images/1.jpg" id="imagen" style="width:150px; height:150px" />

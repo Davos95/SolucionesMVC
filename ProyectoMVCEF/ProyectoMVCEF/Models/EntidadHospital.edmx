@@ -51,7 +51,7 @@
           <Key>
             <PropertyRef Name="HOSPITAL_COD" />
           </Key>
-          <Property Name="HOSPITAL_COD" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="HOSPITAL_COD" Type="int" Nullable="false" />
           <Property Name="NOMBRE" Type="nvarchar" MaxLength="50" />
           <Property Name="DIRECCION" Type="nvarchar" MaxLength="50" />
           <Property Name="TELEFONO" Type="nvarchar" MaxLength="50" />
@@ -61,7 +61,7 @@
           <Key>
             <PropertyRef Name="EMPLEADO_NO" />
           </Key>
-          <Property Name="HOSPITAL_COD" Type="nvarchar" MaxLength="50" />
+          <Property Name="HOSPITAL_COD" Type="int" />
           <Property Name="SALA_COD" Type="nvarchar" MaxLength="50" />
           <Property Name="EMPLEADO_NO" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="APELLIDO" Type="nvarchar" MaxLength="50" />
@@ -90,6 +90,7 @@ warning 6002: The table/view 'HOSPITAL.dbo.TODOSEMPLEADOS' does not have a prima
           <Parameter Name="INSCRIPCION" Type="int" Mode="In" />
         </Function>
         <Function Name="MOSTRARENFERMOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="MOSTRARHOSPITALES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="PAGINACIONDOCTORESAGRUPADOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="POSICION" Type="int" Mode="In" />
           <Parameter Name="SALARIO" Type="int" Mode="In" />
@@ -153,7 +154,6 @@ warning 6002: The table/view 'HOSPITAL.dbo.TODOSEMPLEADOS' does not have a prima
           </FunctionImport>
           <EntitySet Name="TODOSEMPLEADOS" EntityType="HOSPITALModel.TODOSEMPLEADOS" />
           <EntitySet Name="DOCTOR" EntityType="HOSPITALModel.DOCTOR" />
-          <EntitySet Name="PLANTILLA" EntityType="HOSPITALModel.PLANTILLA" />
           <EntitySet Name="EMP" EntityType="HOSPITALModel.EMP" />
           <EntitySet Name="DEPT" EntityType="HOSPITALModel.DEPT" />
           <EntitySet Name="ENFERMO" EntityType="HOSPITALModel.ENFERMO" />
@@ -167,7 +167,9 @@ warning 6002: The table/view 'HOSPITAL.dbo.TODOSEMPLEADOS' does not have a prima
           <FunctionImport Name="PAGINAREMPLEADOSSIMPLE1" ReturnType="Collection(HOSPITALModel.PAGINAREMPLEADOSSIMPLE1_Result)">
           <Parameter Name="POSICION" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="MOSTRARHOSPITALES" EntitySet="HOSPITAL" ReturnType="Collection(HOSPITALModel.HOSPITAL)" />
           <EntitySet Name="HOSPITAL" EntityType="HOSPITALModel.HOSPITAL" />
+          <EntitySet Name="PLANTILLA" EntityType="HOSPITALModel.PLANTILLA" />
         </EntityContainer>
         <ComplexType Name="PAGINAREMPLEADOSSIMPLE_Result">
           <Property Type="Int64" Name="POSICION" Nullable="true" />
@@ -220,18 +222,6 @@ warning 6002: The table/view 'HOSPITAL.dbo.TODOSEMPLEADOS' does not have a prima
           <Property Name="APELLIDO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ESPECIALIDAD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="SALARIO" Type="Int32" />
-        </EntityType>
-        <EntityType Name="PLANTILLA">
-          <Key>
-            <PropertyRef Name="EMPLEADO_NO" />
-          </Key>
-          <Property Name="HOSPITAL_COD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="SALA_COD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="EMPLEADO_NO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="APELLIDO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="FUNCION" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="T" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="SALARIO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="EMP">
           <Key>
@@ -288,15 +278,34 @@ warning 6002: The table/view 'HOSPITAL.dbo.TODOSEMPLEADOS' does not have a prima
           <Property Type="String" Name="DNOMBRE" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="LOC" Nullable="true" MaxLength="50" />
         </ComplexType>
+        <ComplexType Name="MOSTRARHOSPITALES_Result">
+          <Property Type="String" Name="HOSPITAL_COD" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="NOMBRE" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="DIRECCION" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="TELEFONO" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="NUM_CAMA" Nullable="true" MaxLength="50" />
+        </ComplexType>
         <EntityType Name="HOSPITAL">
           <Key>
             <PropertyRef Name="HOSPITAL_COD" />
           </Key>
-          <Property Name="HOSPITAL_COD" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HOSPITAL_COD" Type="Int32" Nullable="false" />
           <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="DIRECCION" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="TELEFONO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="NUM_CAMA" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="PLANTILLA">
+          <Key>
+            <PropertyRef Name="EMPLEADO_NO" />
+          </Key>
+          <Property Name="HOSPITAL_COD" Type="Int32" />
+          <Property Name="SALA_COD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EMPLEADO_NO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="APELLIDO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FUNCION" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="T" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SALARIO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -342,19 +351,6 @@ warning 6002: The table/view 'HOSPITAL.dbo.TODOSEMPLEADOS' does not have a prima
                 <ScalarProperty Name="ESPECIALIDAD" ColumnName="ESPECIALIDAD" />
                 <ScalarProperty Name="APELLIDO" ColumnName="APELLIDO" />
                 <ScalarProperty Name="DOCTOR_NO" ColumnName="DOCTOR_NO" />
-                <ScalarProperty Name="HOSPITAL_COD" ColumnName="HOSPITAL_COD" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PLANTILLA">
-            <EntityTypeMapping TypeName="HOSPITALModel.PLANTILLA">
-              <MappingFragment StoreEntitySet="PLANTILLA">
-                <ScalarProperty Name="SALARIO" ColumnName="SALARIO" />
-                <ScalarProperty Name="T" ColumnName="T" />
-                <ScalarProperty Name="FUNCION" ColumnName="FUNCION" />
-                <ScalarProperty Name="APELLIDO" ColumnName="APELLIDO" />
-                <ScalarProperty Name="EMPLEADO_NO" ColumnName="EMPLEADO_NO" />
-                <ScalarProperty Name="SALA_COD" ColumnName="SALA_COD" />
                 <ScalarProperty Name="HOSPITAL_COD" ColumnName="HOSPITAL_COD" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -430,6 +426,9 @@ warning 6002: The table/view 'HOSPITAL.dbo.TODOSEMPLEADOS' does not have a prima
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="MOSTRARENFERMOS" FunctionName="HOSPITALModel.Store.MOSTRARENFERMOS" />
+          <FunctionImportMapping FunctionImportName="MOSTRARHOSPITALES" FunctionName="HOSPITALModel.Store.MOSTRARHOSPITALES">
+          </FunctionImportMapping>
           <EntitySetMapping Name="HOSPITAL">
             <EntityTypeMapping TypeName="HOSPITALModel.HOSPITAL">
               <MappingFragment StoreEntitySet="HOSPITAL">
@@ -441,7 +440,19 @@ warning 6002: The table/view 'HOSPITAL.dbo.TODOSEMPLEADOS' does not have a prima
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="MOSTRARENFERMOS" FunctionName="HOSPITALModel.Store.MOSTRARENFERMOS" />
+          <EntitySetMapping Name="PLANTILLA">
+            <EntityTypeMapping TypeName="HOSPITALModel.PLANTILLA">
+              <MappingFragment StoreEntitySet="PLANTILLA">
+                <ScalarProperty Name="SALARIO" ColumnName="SALARIO" />
+                <ScalarProperty Name="T" ColumnName="T" />
+                <ScalarProperty Name="FUNCION" ColumnName="FUNCION" />
+                <ScalarProperty Name="APELLIDO" ColumnName="APELLIDO" />
+                <ScalarProperty Name="EMPLEADO_NO" ColumnName="EMPLEADO_NO" />
+                <ScalarProperty Name="SALA_COD" ColumnName="SALA_COD" />
+                <ScalarProperty Name="HOSPITAL_COD" ColumnName="HOSPITAL_COD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

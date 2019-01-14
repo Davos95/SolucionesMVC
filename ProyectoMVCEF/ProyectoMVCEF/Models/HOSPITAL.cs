@@ -18,7 +18,7 @@ using System;
 public partial class HOSPITAL
 {
 
-    public string HOSPITAL_COD { get; set; }
+    public int HOSPITAL_COD { get; set; }
 
     public string NOMBRE { get; set; }
 
