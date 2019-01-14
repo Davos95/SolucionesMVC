@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HOSPITALModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="DEPT">
+    <Key>
+      <PropertyRef Name="DEPT_NO" />
+    </Key>
+    <Property Name="DEPT_NO" Type="Int32" Nullable="false" />
+    <Property Name="DNOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LOC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityContainer Name="EntidadHospital" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="DEPT" EntityType="Self.DEPT" />
+    <FunctionImport Name="GETMAXDEPTNO" ReturnType="Collection(Int32)" />
+    <FunctionImport Name="INSERTARDEPARTAMENTO">
+      <Parameter Name="NUMERO" Mode="In" Type="Int32" />
+      <Parameter Name="NOMBRE" Mode="In" Type="String" />
+      <Parameter Name="LOC" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+</Schema>

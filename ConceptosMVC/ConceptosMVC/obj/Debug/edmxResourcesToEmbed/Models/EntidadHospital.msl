@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="HOSPITALModelStoreContainer" CdmEntityContainer="EntidadHospital">
+    <EntitySetMapping Name="DEPT">
+      <EntityTypeMapping TypeName="HOSPITALModel.DEPT">
+        <MappingFragment StoreEntitySet="DEPT">
+          <ScalarProperty Name="DEPT_NO" ColumnName="DEPT_NO" />
+          <ScalarProperty Name="DNOMBRE" ColumnName="DNOMBRE" />
+          <ScalarProperty Name="LOC" ColumnName="LOC" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="GETMAXDEPTNO" FunctionName="HOSPITALModel.Store.GETMAXDEPTNO" />
+    <FunctionImportMapping FunctionImportName="INSERTARDEPARTAMENTO" FunctionName="HOSPITALModel.Store.INSERTARDEPARTAMENTO" />
+  </EntityContainerMapping>
+</Mapping>

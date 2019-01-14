@@ -69,3 +69,7 @@ C:\Users\AlumnoMCSD\source\Github\SolucionesMVC\ConceptosMVC\ConceptosMVC\obj\De
 C:\Users\AlumnoMCSD\source\Github\SolucionesMVC\ConceptosMVC\ConceptosMVC\obj\Debug\ConceptosMVC.csproj.CopyComplete
 C:\Users\AlumnoMCSD\source\Github\SolucionesMVC\ConceptosMVC\ConceptosMVC\obj\Debug\ConceptosMVC.dll
 C:\Users\AlumnoMCSD\source\Github\SolucionesMVC\ConceptosMVC\ConceptosMVC\obj\Debug\ConceptosMVC.pdb
+C:\Users\AlumnoMCSD\source\Github\SolucionesMVC\ConceptosMVC\ConceptosMVC\bin\EntityFramework.dll
+C:\Users\AlumnoMCSD\source\Github\SolucionesMVC\ConceptosMVC\ConceptosMVC\bin\EntityFramework.SqlServer.dll
+C:\Users\AlumnoMCSD\source\Github\SolucionesMVC\ConceptosMVC\ConceptosMVC\bin\EntityFramework.xml
+C:\Users\AlumnoMCSD\source\Github\SolucionesMVC\ConceptosMVC\ConceptosMVC\bin\EntityFramework.SqlServer.xml
