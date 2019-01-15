@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-
+/*
 namespace ConceptosMVC.Models
 {
     public class HelperDepartamento
@@ -34,3 +34,4 @@ namespace ConceptosMVC.Models
         }
     }
 }
+*/

@@ -104,25 +104,8 @@
     <Content Include="Global.asax" />
     <Content Include="Images\1.jpg" />
     <Content Include="Images\2.jpg" />
-    <Content Include="Models\EntidadHospital.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>EntidadHospital.Context.cs</LastGenOutput>
-      <DependentUpon>EntidadHospital.edmx</DependentUpon>
-    </Content>
-    <Content Include="Models\EntidadHospital.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>EntidadHospital.edmx</DependentUpon>
-      <LastGenOutput>EntidadHospital.cs</LastGenOutput>
-    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\EntidadHospital.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>EntidadHospital.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\EntidadHospital.edmx.diagram">
-      <DependentUpon>EntidadHospital.edmx</DependentUpon>
-    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -132,29 +115,15 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ContenidosController.cs" />
-    <Compile Include="Controllers\DepartamentoController.cs" />
+    <Compile Include="Controllers\DepartamentoController1.cs" />
+    <Compile Include="Controllers\DepartamentosController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\DEPT.cs">
-      <DependentUpon>EntidadHospital.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\EntidadHospital.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>EntidadHospital.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\EntidadHospital.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>EntidadHospital.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\EntidadHospital.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>EntidadHospital.edmx</DependentUpon>
-    </Compile>
+    <Compile Include="Models\Departamento.cs" />
     <Compile Include="Models\HelperDepartamento.cs" />
+    <Compile Include="Models\HelperDepartamentos.cs" />
+    <Compile Include="Models\HospitalContext.cs" />
     <Compile Include="Models\Personaje.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -172,6 +141,9 @@
     <Content Include="Views\Contenidos\ContenidoJavaScript.cshtml" />
     <Content Include="Views\Departamento\Index.cshtml" />
     <Content Include="Views\Departamento\CrearDepartamento.cshtml" />
+    <Content Include="Views\Departamentos\Index.cshtml" />
+    <Content Include="Views\Departamentos\Create.cshtml" />
+    <Content Include="Views\Departamentos\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
