@@ -1,0 +1,44 @@
+﻿@using InyeccionEntity.Models
+@model IEnumerable<InyeccionEntity.Models.Hospital>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-bordered">
+    <tr>
+        <th>Nombre</th>
+        <th>Direccion</th>
+        <th>Telefono</th>
+        <th>NºCamas</th>
+        <th></th>
+    </tr>
+
+@foreach (Hospital h in Model) {
+    <tr>
+        <td>
+            @h.Nombre
+        </td>
+        <td>
+            @h.Direccion
+        </td>
+        <td>
+            @h.Telefono
+        </td>
+        <td>
+            @h.Camas
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=h.IdHospital }) |
+            @Html.ActionLink("Details", "Details", new { id=h.IdHospital }) |
+            @Html.ActionLink("Delete", "Delete", new { id=h.IdHospital })
+        </td>
+    </tr>
+}
+
+</table>
