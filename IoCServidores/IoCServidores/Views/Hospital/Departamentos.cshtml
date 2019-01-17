@@ -1,0 +1,40 @@
+﻿@using  IoCServidores.Models
+@model IEnumerable<IoCServidores.Models.DEPT>
+
+@{
+    ViewBag.Title = "Departamentos";
+}
+
+<h2>Departamentos</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Nombre
+        </th>
+        <th>
+            Localidad
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (DEPT d in Model) {
+    <tr>
+        <td>
+            @d.Nombre
+        </td>
+        <td>
+            @d.Localidad
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=d.nDepartamento }) |
+            @Html.ActionLink("Details", "Details", new { id=d.nDepartamento }) |
+            @Html.ActionLink("Delete", "Delete", new { id=d.nDepartamento })
+        </td>
+    </tr>
+}
+
+</table>

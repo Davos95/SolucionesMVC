@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2026
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepositoriosHospital", "RepositoriosHospital\RepositoriosHospital.csproj", "{9EA6BC4A-FDF2-4298-A2DC-C1B944D16B01}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InyeccionBBDD", "InyeccionBBDD\InyeccionBBDD.csproj", "{4D945726-D210-4737-9677-E9CC5D2CA5EB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9EA6BC4A-FDF2-4298-A2DC-C1B944D16B01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9EA6BC4A-FDF2-4298-A2DC-C1B944D16B01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9EA6BC4A-FDF2-4298-A2DC-C1B944D16B01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9EA6BC4A-FDF2-4298-A2DC-C1B944D16B01}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D945726-D210-4737-9677-E9CC5D2CA5EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D945726-D210-4737-9677-E9CC5D2CA5EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D945726-D210-4737-9677-E9CC5D2CA5EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D945726-D210-4737-9677-E9CC5D2CA5EB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3A8794A9-DEB2-4CD4-9B41-FF09E3C88958}
+	EndGlobalSection
+EndGlobal
