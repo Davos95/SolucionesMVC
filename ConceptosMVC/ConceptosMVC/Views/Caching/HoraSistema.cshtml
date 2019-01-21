@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewBag.Title = "HoraSistema";
+}
+
+<h2>Ejemplo Caching</h2>
+
+<ul>
+    <li>@Html.ActionLink("Parámetro 1", "HoraSistema", "Caching", new { dato = 1},null)</li>
+    <li>@Html.ActionLink("Parámetro 2", "HoraSistema", "Caching", new { dato = 2 }, null)</li>
+</ul>
+
+<h1 style="color:blue">@ViewBag.Hora</h1>

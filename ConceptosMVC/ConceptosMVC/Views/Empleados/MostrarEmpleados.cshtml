@@ -1,0 +1,41 @@
+﻿@using ConceptosMVC.Models
+@model List<Empleados>
+
+@{
+    ViewBag.Title = "MostrarEmpleados";
+}
+
+<h2>MostrarEmpleados</h2>
+
+<p>
+    @Html.ActionLink("Volver al listado de empleados", "AlmacenarEmpleados", "Empleados")
+</p>
+@if (Session["EMPLEADOS"] != null)
+{
+    <table class="table">
+        <tr>
+            <th>APELLIDO</th>
+            <th>OFICIO</th>
+            <th>SALARIO</th>
+            <th></th>
+        </tr>
+        @foreach (Empleados emp in Model)
+        {
+            <tr>
+                <td>@emp.Apellido</td>
+                <td>@emp.Oficio</td>
+                <td>@emp.Salario</td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = emp.IdEmpleado }) |
+                    @Html.ActionLink("Details", "Details", new { id = emp.IdEmpleado }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = emp.IdEmpleado })
+                </td>
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <h1>NO EXISTE EMPLEADOS ALMACENADOS EN LA SESION</h1>
+}
+

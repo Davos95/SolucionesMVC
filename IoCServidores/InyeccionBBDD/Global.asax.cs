@@ -14,8 +14,8 @@ namespace InyeccionBBDD
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-            //IoCConfigurationAutofac.Configure();
-            IoCCOnfigurationUnity.Configure();
+            IoCConfigurationAutofac.Configure();
+            //IoCCOnfigurationUnity.Configure();
         }
     }
 }

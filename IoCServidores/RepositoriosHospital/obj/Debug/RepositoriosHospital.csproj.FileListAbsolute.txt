@@ -11,7 +11,6 @@ C:\Users\AlumnoMCSD\source\Github\SolucionesMVC\IoCServidores\RepositoriosHospit
 C:\Users\AlumnoMCSD\source\Github\SolucionesMVC\IoCServidores\RepositoriosHospital\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\AlumnoMCSD\source\Github\SolucionesMVC\IoCServidores\RepositoriosHospital\bin\Debug\MySql.Data.xml
 C:\Users\AlumnoMCSD\source\Github\SolucionesMVC\IoCServidores\RepositoriosHospital\bin\Debug\MySql.Data.Entity.EF6.xml
-C:\Users\AlumnoMCSD\source\Github\SolucionesMVC\IoCServidores\RepositoriosHospital\obj\Debug\RepositoriosHospital.csprojAssemblyReference.cache
 C:\Users\AlumnoMCSD\source\Github\SolucionesMVC\IoCServidores\RepositoriosHospital\obj\Debug\RepositoriosHospital.csproj.CoreCompileInputs.cache
 C:\Users\AlumnoMCSD\source\Github\SolucionesMVC\IoCServidores\RepositoriosHospital\obj\Debug\RepositoriosHospital.csproj.CopyComplete
 C:\Users\AlumnoMCSD\source\Github\SolucionesMVC\IoCServidores\RepositoriosHospital\obj\Debug\RepositoriosHospital.dll

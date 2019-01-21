@@ -1,0 +1,18 @@
+﻿@using ConceptosMVC.Models
+@model List<Empleados>
+@{
+    ViewBag.Title = "AlmacenarSalarios";
+}
+
+<h2>AlmacenarSalarios</h2>
+@Html.ActionLink("Mostrar suma en Session", "MostrarSalarios", "Empleados")
+<p>@ViewBag.Salario</p>
+
+<ul>
+    @foreach (Empleados emp in Model)
+    {
+        <li>
+            @Html.ActionLink(emp.Apellido, "AlmacenarSalarios", "Empleados", new { salario = emp.Salario }, null)
+        </li>
+    }
+</ul>

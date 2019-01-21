@@ -13,5 +13,6 @@ namespace RepositoriosHospital.Contexts
     {
         public HospitalContextMySQL() : base("name=cadenaHospitalMySQL") { }
         public DbSet<DEPT> Departamentos { get; set; }
+        public List<EMP> GetEmpleados { get; set; }
     }
 }

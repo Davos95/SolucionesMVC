@@ -1,5 +1,5 @@
 ﻿@using RepositoriosHospital.Models
-@model IEnumerable<RepositoriosHospital.Models.DEPT>
+@model List<EMP>
 
 @{
     ViewBag.Title = "Index";
@@ -12,18 +12,18 @@
 </p>
 <table class="table">
     <tr>
-        <th>Nombre</th>
-        <th>Localidad</th>
+        <th>Apellido</th>
+        <th>Salario</th>
         <th></th>
     </tr>
-@foreach (DEPT d in Model) {
+@foreach (EMP d in Model) {
     <tr>
-        <td>@d.Nombre</td>
-        <td>@d.Localidad</td>
+        <td>@d.APELLIDO</td>
+        <td>@d.SALARIO</td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=d.Numero }) |
-            @Html.ActionLink("Details", "Details", new { id=d.Numero }) |
-            @Html.ActionLink("Delete", "Delete", new { id=d.Numero })
+            @Html.ActionLink("Edit", "Edit", new { id=d.DEPT_NO }) |
+            @Html.ActionLink("Details", "Details", new { id= d.DEPT_NO }) |
+            @Html.ActionLink("Delete", "Delete", new { id= d.DEPT_NO })
         </td>
     </tr>
 }

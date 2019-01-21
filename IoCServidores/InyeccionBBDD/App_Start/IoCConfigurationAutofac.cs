@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using Autofac;
 using Autofac.Integration.Mvc;
 using RepositoriosHospital.Contexts;
+using RepositoriosHospital.Models;
 using RepositoriosHospital.Repositories;
 
 namespace InyeccionBBDD.App_Start
@@ -30,13 +31,16 @@ namespace InyeccionBBDD.App_Start
         }
         private static void RegistrarContexts(ContainerBuilder builder)
         {
-            builder.RegisterType<HospitalContextSQL>().As<IHospitalContext>().InstancePerRequest();
+            builder.Register(z => new EntidadHospital()).InstancePerRequest();
+            
+            //builder.RegisterType<HospitalContextSQL>().As<IHospitalContext>().InstancePerRequest();
             //builder.RegisterType<HospitalContextMySQL>().As<IHospitalContext>().InstancePerRequest();
             //builder.RegisterType<HospitalContextOracle>().As<IHospitalContext>().InstancePerRequest();
         }
         private static void RegistrarRepos(ContainerBuilder builder)
         {
             builder.RegisterType<RepositoryDepartamento>().As<IRepositoryDepartamento>().InstancePerRequest();
+            builder.RegisterType<RepositoryEmpleado>().As<IRepositoryEmpleados>().InstancePerRequest();
         }
     }
 }

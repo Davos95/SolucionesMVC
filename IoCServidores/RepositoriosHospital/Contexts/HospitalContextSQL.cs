@@ -12,5 +12,6 @@ namespace RepositoriosHospital.Contexts
     {
         public HospitalContextSQL() : base("Data Source=LOCALHOST;Initial Catalog=HOSPITAL;Persist Security Info=True;User ID=SA;Password=MCSD2018") { }
         public DbSet<DEPT> Departamentos { get; set; }
+        public List<EMP> GetEmpleados { get; set; }
     }
 }

@@ -9,17 +9,21 @@ namespace InyeccionBBDD.Controllers
 {
     public class DepartamentosController : Controller
     {
-        IRepositoryDepartamento repo;
-        public  DepartamentosController(IRepositoryDepartamento repo)
+        IRepositoryEmpleados repoEmple;
+
+        public  DepartamentosController(IRepositoryEmpleados repoEmple)
         {
-            this.repo = repo;
+            this.repoEmple = repoEmple;
         }
         
         // GET: Index
         public ActionResult Index()
         {
-            return View(this.repo.GetDepartamentos());
+            return View(this.repoEmple.GetEmpleados());
         }
-
+        public ActionResult IdEmpleado(int? num)
+        {
+            return View(this.repoEmple.GetEmpleado(num.Value));
+        }
     }
 }

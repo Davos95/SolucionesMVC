@@ -1,0 +1,17 @@
+﻿@using ConceptosMVC.Models
+@model List<Empleados>
+@{
+    ViewBag.Title = "MostrarEmpleadosSesion";
+}
+
+<h2>MostrarEmpleadosSesion</h2>
+<p>@Html.ActionLink("Mostrar lista de empleados para almacenar", "AlmacenarEmpleadosSesion", "PracticaEmpleados")</p>
+
+@foreach (Empleados emp in Model)
+{
+    <dt>@emp.Apellido</dt>
+    <dd>@emp.Oficio</dd>
+    <dd>@Html.ActionLink("Quitar", "MostrarEmpleadosSesion", "PracticaEmpleados", new { empno = emp.IdEmpleado }, null)</dd>
+}
+
+<h3>Suma salarial de los empleados en la sesion : @ViewBag.sumaSalarial</h3>

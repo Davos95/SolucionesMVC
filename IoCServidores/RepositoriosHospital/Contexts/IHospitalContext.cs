@@ -11,6 +11,7 @@ namespace RepositoriosHospital.Contexts
     public interface IHospitalContext
     {
         DbSet<DEPT> Departamentos { get; set; }
+        List<EMP> GetEmpleados { get; set; }
     }
 
 }

@@ -19,5 +19,7 @@ namespace ConceptosMVC.Models
         public HospitalContext(String cmstring) :base(cmstring) { }
 
         public DbSet<Departamento> Departamentos { get; set; }
+        public DbSet<Empleados> Empleados { get; set; }
+
     }
 }

@@ -12,6 +12,7 @@ namespace RepositoriosHospital.Contexts
     {
         public HospitalContextOracle(): base("name=cadenaHospitalOracle") { }
         public DbSet<DEPT> Departamentos { get; set; }
+        public List<EMP> GetEmpleados { get; set; }
 
         //BASE DE DATOS ORACLE INDICAMOS EL ESQUEMA
 

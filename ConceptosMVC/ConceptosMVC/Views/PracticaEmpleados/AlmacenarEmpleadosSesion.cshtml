@@ -1,0 +1,36 @@
+﻿@using ConceptosMVC.Models
+@model List<Empleados>
+@{
+    ViewBag.Title = "AlmacenarEmpleadosSesion";
+
+    List<int> empleados;
+    if (Session["EMPLEADOS"] != null)
+    {
+        empleados = (List<int>)Session["EMPLEADOS"];
+    } else
+    {
+        empleados = new List<int>();
+    }
+
+}
+
+<h2>AlmacenarEmpleadosSesion</h2>
+@Html.ActionLink("Mostrar empleados en sesion","MostrarEmpleadosSesion","PracticaEmpleados")
+<ul>
+    @foreach (Empleados emp in Model)
+    {
+    <li>
+        @emp.Apellido
+            @if(empleados.Contains(emp.IdEmpleado))
+            {
+                <span>✔</span>            
+            }
+            else
+            {
+                @Html.ActionLink("Almacenar", "AlmacenarEmpleadosSesion", "PracticaEmpleados", new { empno = emp.IdEmpleado }, null)
+            }
+        </li>
+    }
+</ul>
+
+<h3>@ViewBag.Mensaje</h3>
