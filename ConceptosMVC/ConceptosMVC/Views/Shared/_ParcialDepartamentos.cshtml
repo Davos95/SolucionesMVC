@@ -1,0 +1,12 @@
+﻿@using ConceptosMVC.Models
+@model List<Departamento>
+
+<ul>
+    @foreach (Departamento dept in Model)
+    {
+        <li>
+            @Html.ActionLink(dept.Nombre,"Edit","Departamento", new { id = dept.Numero }, null)
+        </li>
+    }
+</ul>
+

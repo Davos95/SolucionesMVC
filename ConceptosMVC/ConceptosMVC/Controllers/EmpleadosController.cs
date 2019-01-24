@@ -19,7 +19,8 @@ namespace ConceptosMVC.Controllers
         // GET: Empleados
         public ActionResult Index()
         {
-            return View();
+            List<Empleados> empleados = this.repo.GetEmpleados();
+            return View(empleados);
         }
 
         public ActionResult AlmacenarSalarios(int? salario)

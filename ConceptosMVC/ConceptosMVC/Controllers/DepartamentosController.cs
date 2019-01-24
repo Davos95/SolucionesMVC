@@ -51,5 +51,11 @@ namespace ConceptosMVC.Controllers
             return RedirectToAction("Index","Departamentos");
         }
 
+        [ChildActionOnly]
+        public ActionResult _ParcialDepartamentos()
+        {
+            List<Departamento> departamentos = this.helper.GetDepartamentos();
+            return PartialView(departamentos);
+        }
     }
 }

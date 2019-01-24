@@ -157,6 +157,8 @@
     <Content Include="Views\PracticaEmpleados\AlmacenarEmpleadosSesion.cshtml" />
     <Content Include="Views\PracticaEmpleados\MostrarEmpleadosSesion.cshtml" />
     <Content Include="Views\Caching\HoraSistema.cshtml" />
+    <Content Include="Views\Shared\_PartialDibujo.cshtml" />
+    <Content Include="Views\Shared\_ParcialDepartamentos.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

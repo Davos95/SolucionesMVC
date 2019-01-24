@@ -15,3 +15,8 @@
     }
 </ul>
 
+@foreach (Empleados emp in Model)
+{
+    @Html.Partial("_PartialDibujo",emp)
+}
+
