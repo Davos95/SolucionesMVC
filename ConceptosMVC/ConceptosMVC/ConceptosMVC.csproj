@@ -100,6 +100,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\sweetalert2.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Images\1.jpg" />
@@ -109,16 +110,23 @@
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\sweetalert2.all.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AjaxController.cs" />
     <Compile Include="Controllers\CachingController.cs" />
     <Compile Include="Controllers\ContenidosController.cs" />
     <Compile Include="Controllers\DepartamentoController1.cs" />
     <Compile Include="Controllers\DepartamentosController.cs" />
     <Compile Include="Controllers\EmpleadosController.cs" />
+    <Compile Include="Controllers\PersonasController.cs" />
+    <Compile Include="Controllers\PracticaAjaxController.cs" />
     <Compile Include="Controllers\PracticaEmpleadosController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -128,7 +136,9 @@
     <Compile Include="Models\HelperDepartamento.cs" />
     <Compile Include="Models\HelperDepartamentos.cs" />
     <Compile Include="Models\HospitalContext.cs" />
+    <Compile Include="Models\Persona.cs" />
     <Compile Include="Models\Personaje.cs" />
+    <Compile Include="Models\RepositoryHospital.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\RepositoryEmpleados.cs" />
   </ItemGroup>
@@ -159,6 +169,12 @@
     <Content Include="Views\Caching\HoraSistema.cshtml" />
     <Content Include="Views\Shared\_PartialDibujo.cshtml" />
     <Content Include="Views\Shared\_ParcialDepartamentos.cshtml" />
+    <Content Include="Views\Personas\Index.cshtml" />
+    <Content Include="Views\Personas\DetallesPersona.cshtml" />
+    <Content Include="Views\Ajax\_EmpleadosDepartamento.cshtml" />
+    <Content Include="Views\Ajax\Index.cshtml" />
+    <Content Include="Views\PracticaAjax\Index.cshtml" />
+    <Content Include="Views\PracticaAjax\_DetallesEmpleado.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

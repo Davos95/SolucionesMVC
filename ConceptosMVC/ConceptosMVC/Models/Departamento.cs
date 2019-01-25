@@ -24,5 +24,7 @@ namespace ConceptosMVC.Models
         [Column("LOC")]
         [Required(ErrorMessage = "La localidad es obligatoria")]
         public String Localidad { get; set; }
+
+        
     }
 }

@@ -1,0 +1,71 @@
+﻿@using ConceptosMVC.Models
+@model Empleados
+
+
+
+<div>
+    <div class="row">
+        <div class="col-sm-4">
+            <h3>Detalles</h3>
+            <dl>
+                <dt>
+                    @Model.Apellido
+                </dt>
+                <dd>
+                    Oficio: @Model.Oficio
+                </dd>
+                <dd>
+                    Salario: @Model.Salario
+                </dd>
+                <dd>
+                    Departamento: @Model.IdDepartamento
+                </dd>
+            </dl>
+            <button class="delete">Eliminar</button>
+        </div>
+        <div class="col-sm-2 col-sm-offset-4">
+            <button class="clear">X</button>
+        </div>
+    </div>
+
+
+</div>
+
+<script type="text/javascript">
+    $(".clear").click(function () {
+        $("#capaDetalle").html("");
+    });
+    $(".delete").click(function () {
+        Swal.fire({
+            title: 'Estás seguro que quieres eliminar a @Model.Apellido ?',
+            text: "",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: '¡Sí!',
+            cancelButtonText: '¡No!'
+        }).then((result) => {
+            if (result.value) {
+                var datos = { empno: @Model.IdEmpleado };
+                $.ajax({
+                    method: 'GET',
+                    url: "/PracticaAjax/EliminarEmpleado",
+                    data: datos,
+                    success: function () {
+                        Swal.fire({
+                            title: '¡Eliminado!',
+                            text: '@Model.Apellido ha sido eliminado',
+                            type: 'success',
+                            confirmButtonText: '¡Vale!'
+                        }).then((result) => {
+                            if (result.value) {
+                                location.reload();
+                            }
+                            });
+                    }
+                });
+            }
+        })
+    });
+</script>

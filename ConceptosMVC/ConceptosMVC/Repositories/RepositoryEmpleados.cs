@@ -25,5 +25,19 @@ namespace ConceptosMVC.Repositories
                            select datos;
             return consulta.ToList();
         }
+
+        public Empleados GetEmpleadoID(int empno)
+        {
+            var consulta = from datos in context.Empleados
+                           where datos.IdEmpleado == empno
+                           select datos;
+            return consulta.FirstOrDefault();
+        }
+        public void DeleteEmpleado(int empno)
+        {
+            Empleados empleado = GetEmpleadoID(empno);
+            this.context.Empleados.Remove(empleado);
+            this.context.SaveChanges();
+        }
     }
 }

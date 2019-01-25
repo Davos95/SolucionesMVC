@@ -1,0 +1,44 @@
+﻿@using ConceptosMVC.Models
+@model List<Empleados>
+
+<h2>_EmpleadosDepartamento</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+@if (Model != null)
+{
+    <table class="table">
+        <tr>
+            <th>
+                APELLIDO
+            </th>
+            <th>
+                OFICIO
+            </th>
+            <th>
+                SALARIO
+            </th>
+        </tr>
+
+        @foreach (Empleados emp in Model)
+        {
+            <tr>
+                <td>
+                    @emp.Apellido
+                </td>
+                <td>
+                    @emp.Oficio
+                </td>
+                <td>
+                    @emp.Salario
+                </td>
+            </tr>
+        }
+
+    </table>
+
+} else
+{
+    <h1>No hay empleados en ese departamento</h1>
+}

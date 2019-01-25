@@ -1,0 +1,48 @@
+﻿@using ConceptosMVC.Models
+@model List<Persona>
+@{ 
+    Layout = null;
+}
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+           NOMBRE
+        </th>
+        <th>
+            APELLIDOS
+        </th>
+        <th>
+            EDAD
+        </th>
+        <th>
+            DEPORTES FAVORITOS
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (Persona item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Apellidos)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Edad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DeporteFavorito)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

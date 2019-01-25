@@ -1,0 +1,37 @@
+﻿@using ConceptosMVC.Models
+@model List<Empleados>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@section scripts {
+
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/Scripts/sweetalert2.all.min.js"></script>
+    <link href="~/Content/sweetalert2.css" rel="stylesheet" />
+
+}
+<h2>Index</h2>
+<div class="row">
+    <div class="col-sm-4">
+        @if (Model != null)
+        {
+            <ul>
+                @foreach (Empleados emp in Model)
+                {
+                    <li>
+                        @emp.Apellido | @Ajax.ActionLink("Detalles", "_DetallesEmpleado", new { empno = emp.IdEmpleado }, new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "capaDetalle" }, null)
+                    </li>
+                }
+            </ul>
+        }
+    </div>
+    <div class="col-sm-4">
+        <div id="capaDetalle"></div>
+    </div>
+</div>
+
+
+
+

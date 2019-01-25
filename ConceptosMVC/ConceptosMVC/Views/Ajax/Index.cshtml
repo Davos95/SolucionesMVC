@@ -1,0 +1,37 @@
+﻿@using ConceptosMVC.Models
+@model List<Departamento>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@section scripts
+{
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+
+}
+<h2>Mostrar detalle Ajax</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>NOMBRE</th>
+        <th>LOCALIDAD</th>
+        <th></th>
+    </tr>
+@foreach (Departamento dept in Model) {
+    <tr>
+        <td>@dept.Nombre</td>
+        <td>@dept.Localidad</td>
+        <td>
+            @*@Html.ActionLink("Detalles sin AJAX", "_EmpleadosDepartamento",new { deptno=dept.Numero})*@
+            @Ajax.ActionLink("EMPLEADOS AJAX","_EmpleadosDepartamento", new {deptno=dept.Numero }, new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "capaEmpleados"},null )
+        </td>
+    </tr>
+}
+
+</table>
+
+<div id="capaEmpleados"></div>

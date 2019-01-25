@@ -19,6 +19,8 @@ namespace ConceptosMVC.Models
         public String Oficio { get; set; }
         [Column("SALARIO")]
         public int Salario { get; set; }
+        [Column("DEPT_NO")]
+        public int IdDepartamento { get; set; }
 
     }
 }

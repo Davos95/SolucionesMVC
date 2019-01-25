@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $("#botonpersona").click(function () {
+                //Pintamos en un div de la pagina las personas
+                $("#capaspersonas").load("/Personas/DetallesPersona");
+            });
+        });
+    </script>
+    
+}
+<button type="button" id="botonpersona" class="btn-success">Mostrar personas AJAX</button>
+<div id="capaspersonas"></div>
+
+@Html.ActionLink("Personas sin AJAX", "DetallesPersona", "Personas")
