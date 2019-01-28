@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "CifradoFacil";
+}
+
+<h2>Cifrado Facil Hash</h2>
+
+<form method="post">
+    <div>
+        <label>Texto a cifrar: </label>
+        <input type="text" name="texto" class="form-control" />
+    </div>
+    <div>
+        <label>Resultado</label>
+        <textarea class="form-control" name="resultado">@ViewBag.Resultado</textarea>
+    </div>
+    <div>
+        <button type="submit" name="accion" value="cifrar" class="btn-danger">Cifrar Contenido</button>
+        <button type="submit" name="accion" value="comparar" class="btn-success">
+            Comparar cifrados
+        </button>
+    </div>
+</form>
+
+<h2 style="color:blue">@ViewBag.Mensaje</h2>

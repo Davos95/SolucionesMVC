@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "RegistrarUsuarios";
+}
+
+<h2>RegistrarUsuarios</h2>
+@Html.ActionLink("LogIn", "Login", "CifradoBBDD");
+
+<form method="post">
+    <div>
+        <label>Nombre:</label>
+        <input type="text" name="nombre" class="form-control" />
+    </div>
+    <div>
+        <label>Usuario: </label>
+        <input type="text" name="username" class="form-control" />
+    </div>
+    <div>
+        <label>Password</label>
+        <input type="password" name="password" class="form-control" />
+    </div>
+    <div>
+        <button type="submit">Registrar</button>
+    </div>
+</form>

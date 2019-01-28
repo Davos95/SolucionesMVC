@@ -21,5 +21,6 @@ namespace ConceptosMVC.Models
         public DbSet<Departamento> Departamentos { get; set; }
         public DbSet<Empleados> Empleados { get; set; }
 
+        public DbSet<Usuario> usuarios { get; set; }
     }
 }

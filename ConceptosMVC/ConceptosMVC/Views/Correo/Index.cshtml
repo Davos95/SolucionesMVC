@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<form method="post" enctype="multipart/form-data">
+    <div>
+        <label>Correo: </label>
+        <input type="text" name="destinatario" class="form-control" />
+    </div>
+    <div>
+        <label>Asunto: </label>
+        <input type="text" name="asunto" class="form-control" />
+    </div>
+    <div>
+        <label>Mensaje: </label>
+        <textarea name="mensaje" class="form-control"></textarea>
+    </div>
+    <div>
+        <input type="file" name="fichero" class="form-control" />
+    </div>
+    <div>
+        <button type="submit" class="btn-success">
+            Enviar mensaje
+        </button>
+    </div>
+</form>
+
+<h1 style="color: blue">
+    @ViewBag.Mensaje
+</h1>

@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "CifradoEficiente";
+}
+
+<h2>CifradoEficiente</h2>
+
+<form method="post">
+    <div>
+        <label>Encriptaciones: </label>
+        <input type="number" name="numHash" class="form-control" />
+        <label>Salt: </label>
+        <input type="text" name="salt" class="form-control" />
+    </div>
+    <div>
+        <label>Contenido: </label>
+        <textarea name="contenido" class="form-control"></textarea>
+    </div>
+    <div>
+        <label>Resultado</label>
+        <textarea name="resultado">@ViewBag.Resultado</textarea>
+    </div>
+    <div>
+        <button type="submit" name="op" value="1">Encriptar</button>
+        <button type="submit" name="op" value="2">Comprobar</button>
+    </div>
+</form>
+
+<h2 style="color:blue">@ViewBag.comprobacion</h2>
