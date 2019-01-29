@@ -1,0 +1,29 @@
+﻿@using ConceptosMVC2.Models
+@model List<Enfermo>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>Apellido</th>
+        <th>Direccion</th>
+        <th></th>
+    </tr>
+@foreach (Enfermo en in Model) {
+    <tr>
+        <td>@en.Apellido</td>
+        <td>@en.Direccion</td>
+        <td>
+            @Html.ActionLink("Delete", "Delete", new { id = en.Inscripcion })
+        </td>
+    </tr>
+}
+
+</table>
