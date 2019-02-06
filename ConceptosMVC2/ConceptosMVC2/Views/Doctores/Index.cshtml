@@ -1,0 +1,52 @@
+﻿@model IEnumerable<ConceptosMVC2.Models.Doctor>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Listado Doctores</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            Codigo Hospital
+        </th>
+        <th>
+            Apellido
+        </th>
+        <th>
+            Especialidad
+        </th>
+        <th>
+            Salario
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CodigoHospital)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Apellido)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Especialidad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Salario)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IdDoctor }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IdDoctor }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IdDoctor })
+        </td>
+    </tr>
+}
+
+</table>

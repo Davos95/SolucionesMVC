@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+@Html.ActionLink("Español", "Index", "Home", new { cult = "es-ES" } )
+@Html.ActionLink("United Stated", "Index", "Home", new { cult = "en-US" }, null)
+<h2>Index</h2>
+
+<h1>@ViewBag.Saludo</h1>
+
+<img src="~/images/@ViewBag.Imagen" />
+
+<h1>@ViewBag.Fecha</h1>

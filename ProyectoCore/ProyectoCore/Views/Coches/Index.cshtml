@@ -1,0 +1,21 @@
+﻿@model ProyectoCore.Models.ICoche
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h3 style="color:blue"> Marca: @Model.Marca . Modelo: @Model.Modelo</h3>
+
+<img src="~/images/@Model.Imagen" style="width: 500px; height:250px" />
+
+<p>Velodicad actual: @Model.VelocidadActual</p>
+<p>Velocidad Maxima: @Model.VelocidadMaxima</p>
+
+@using (Html.BeginForm())
+{
+    <div>
+        <button type="submit" class="btn btn-success" name="accion" value="acelerar">Acelerar</button>
+        <button type="submit" class="btn btn-success" name="accion" value="frenar">Frenar</button>
+    </div>
+}
+    <p>@ViewData["MENSAJE"]</p>
