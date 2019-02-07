@@ -3,12 +3,18 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <UserSecretsId>23eaf502-b266-46c2-bf7e-b9121ebc43cf</UserSecretsId>
+    <ApplicationInsightsResourceId>/subscriptions/182b0d94-ab25-4274-8a1a-5ea4e9879019/resourcegroups/RecursosTajamar/providers/microsoft.insights/components/donativoscore</ApplicationInsightsResourceId>
+    <ApplicationInsightsAnnotationResourceId>/subscriptions/182b0d94-ab25-4274-8a1a-5ea4e9879019/resourcegroups/RecursosTajamar/providers/microsoft.insights/components/donativoscore</ApplicationInsightsAnnotationResourceId>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="EntityFramework" Version="6.2.0" />
+    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.6.0" />
+    <PackageReference Include="Microsoft.ApplicationInsights.TraceListener" Version="2.8.1" />
+    <PackageReference Include="Microsoft.ApplicationInsights.Web" Version="2.9.0" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.AspNetCore.Session" Version="2.1.1" />
     <PackageReference Include="Microsoft.Extensions.Logging.AzureAppServices" Version="2.1.1" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="2.1.4" />
@@ -16,6 +22,10 @@
 
   <ItemGroup>
     <Folder Include="Carpeta\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services" />
   </ItemGroup>
 
 </Project>

@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.ApplicationInsights.TraceListener;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.Features;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -48,6 +51,20 @@ namespace ProyectoCore
             //El coche que instanciemos...
             services.AddSingleton<ICoche, Deportivo>(z => new Deportivo("ToFast","ToFurious","coche_azul.jpg",300));
 
+            //CONFIGURAMOS LA POLITICA DE COOKIES
+            services.Configure<CookiePolicyOptions>(options =>
+            {
+                options.CheckConsentNeeded = context => true;
+                options.MinimumSameSitePolicy = SameSiteMode.None;
+            });
+
+            //CONFIGURAMOS EL COMPORTAMIENTO DEL SESSION
+            services.AddDistributedMemoryCache();
+            services.AddSession(options => {
+                options.IdleTimeout = TimeSpan.FromSeconds(30);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
             //DEBEMOS INDICAR QUE ARRANQUE EL SERVICIO DEL 
             //MIDELWARE
             services.AddMvc();
@@ -75,6 +92,7 @@ namespace ProyectoCore
                 }
             );
 
+            Trace.Listeners.Add(new ApplicationInsightsTraceListener());
 
 
             //1. CONTROL DE ERRORES
@@ -82,12 +100,19 @@ namespace ProyectoCore
             {
                 app.UseDeveloperExceptionPage();
             }
+
             //4. UTILIZAMOS ARCHIVOS DE wwwroot
             app.UseStaticFiles();
 
+            //5. POLITICA DE COOKIES
+            app.UseCookiePolicy();
+
+            //7. UTILIZAMOS LA SESION
+            app.UseSession();
+
+
             //8. DEBEMOS DAR LA RUTA DE INICIO
             //CONFIGURAMOS LAS AREAS
-
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

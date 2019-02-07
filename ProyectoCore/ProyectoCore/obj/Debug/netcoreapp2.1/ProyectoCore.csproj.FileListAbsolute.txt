@@ -57,3 +57,7 @@ C:\Users\AlumnoMCSD\source\Github\SolucionesMVC\ProyectoCore\ProyectoCore\obj\De
 C:\Users\AlumnoMCSD\source\Github\SolucionesMVC\ProyectoCore\ProyectoCore\obj\Debug\netcoreapp2.1\Razor\Views\Departamento\Index.g.cshtml.cs
 C:\Users\AlumnoMCSD\source\Github\SolucionesMVC\ProyectoCore\ProyectoCore\obj\Debug\netcoreapp2.1\Razor\Views\Departamento\Create.g.cshtml.cs
 C:\Users\AlumnoMCSD\source\Github\SolucionesMVC\ProyectoCore\ProyectoCore\obj\Debug\netcoreapp2.1\Razor\Views\Coches\Index.g.cshtml.cs
+C:\Users\AlumnoMCSD\source\Github\SolucionesMVC\ProyectoCore\ProyectoCore\obj\Debug\netcoreapp2.1\Razor\Views\Home\Donativos.g.cshtml.cs
+C:\Users\AlumnoMCSD\source\Github\SolucionesMVC\ProyectoCore\ProyectoCore\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_PartialCookieConsent.g.cshtml.cs
+C:\Users\AlumnoMCSD\source\Github\SolucionesMVC\ProyectoCore\ProyectoCore\obj\Debug\netcoreapp2.1\UserSecretsAssemblyInfo.cs
+C:\Users\AlumnoMCSD\source\Github\SolucionesMVC\ProyectoCore\ProyectoCore\obj\Debug\netcoreapp2.1\Razor\Views\Home\MiSesion.g.cshtml.cs

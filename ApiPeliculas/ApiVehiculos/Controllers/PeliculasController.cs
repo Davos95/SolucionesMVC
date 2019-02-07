@@ -20,8 +20,21 @@ namespace ApiVehiculos.Controllers
             this.listaPeliculas.Add(pelicula);
             pelicula = new Pelicula(3, "Piratas del Caribe: La maldición del Perla Negra", "Un herrero y un extraño pirata se unen para rescatar a una dama secuestrada de un capitán de piratas y su tripulación.", new DateTime(2003, 8, 14), "http://viveloya.com/images/stories/virtuemart/product/maldición%20del%20perla%20negra.jpg");
             this.listaPeliculas.Add(pelicula);
-
-
+            pelicula = new Pelicula(4, "Avengers: Inifinity War", "Los superhéroes se alían para vencer al poderoso Thanos, el peor enemigo al que se han enfrentado. Si Thanos logra reunir las seis gemas del infinito: poder, tiempo, alma, realidad, mente y espacio, nadie podrá detenerlo.", new DateTime(2018, 4, 27), "http://t1.gstatic.com/images?q=tbn:ANd9GcS2xHmABIm07FlykPsdTlijgtafbiTD5UuRCFAdtkYl6doxJDGi");
+            this.listaPeliculas.Add(pelicula);
+            pelicula = new Pelicula(5, "Spider-Man: Un nuevo universo", "Luego de ser mordido por una araña radioactiva, el joven Miles Morales desarrolla misteriosos poderes que lo transforman en el Hombre Araña. Ahora deberá usar sus nuevas habilidades ante el malvado Kingpin, un enorme demente que puede abrir portales hacia otros universos.", new DateTime(2018, 12, 21), "http://t0.gstatic.com/images?q=tbn:ANd9GcQyfxXHWbpUJOUSgnBv2AyF0uL1Br9P3b_Erf1uB_gG8yZHUiv-");
+            this.listaPeliculas.Add(pelicula);
         }
+
+        public List<Pelicula> GetPeliculas()
+        {
+            return this.listaPeliculas;
+        }
+
+        public Pelicula GetPelicula(int id)
+        {
+            return this.listaPeliculas.Find(x => x.IdPelicula == id);
+        }
+
     }
 }

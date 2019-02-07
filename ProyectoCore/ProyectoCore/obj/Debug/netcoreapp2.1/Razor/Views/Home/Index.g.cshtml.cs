@@ -65,7 +65,7 @@ using ProyectoCore;
             WriteLiteral("\r\n<h2>Estoy en Casa!!</h2>\r\n\r\n<h2 id=\"titulo\" style=\"color:blue\"></h2>\r\n<button type=\"button\" class=btn-success id=\"boton\">\r\n    Voy a tener suerte...\r\n</button>\r\n");
             EndContext();
             BeginContext(438, 63, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "8a0fbf0bddd549d49a17e2d42efcf025", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "2a0d01205a23468bb22e05c9ace0365a", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();

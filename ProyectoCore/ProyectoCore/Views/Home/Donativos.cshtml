@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewData["Title"] = "Donativos";
+}
+
+<h2>Donativos App Insights</h2>
+<form method="post">
+    <div>
+        <label>Nombre: </label>
+        <input type="text" name="nombre" class="form-control" />
+    </div>
+    <div>
+        <label>Cantidad a donar: </label>
+        <input type="text" name="cantidad" class="form-control" />
+    </div>
+    <div>
+        <button type="submit" class=" btn btn-success">Realizar donativo</button>
+    </div>
+</form>
+<h2 style="color: blue">@ViewData["MENSAJE"]</h2>
+

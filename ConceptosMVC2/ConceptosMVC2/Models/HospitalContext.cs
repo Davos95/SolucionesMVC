@@ -10,5 +10,7 @@ namespace ConceptosMVC2.Models
     {
         public HospitalContext() : base("name=cadenaHospital") { }
         public DbSet<Enfermo> Enfermos { get; set; }
+        public DbSet<Doctor> Doctores { get; set; }
+        public DbSet<Excepcion> Excepciones { get; set; }
     }
 }
